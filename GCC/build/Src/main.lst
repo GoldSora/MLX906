@@ -1,0 +1,537 @@
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	system_phys_mem
+  18              		.section	.rodata.system_phys_mem,"a"
+  19              		.align	2
+  22              	system_phys_mem:
+  23 0000 00000000 		.word	__los_heap_addr_start__
+  24 0004 00000000 		.word	__los_heap_addr_end__
+  25 0008 00000000 		.word	0
+  26 000c 00000000 		.word	0
+  27              		.section	.rodata
+  28              		.align	2
+  29              	.LC0:
+  30 0000 57656C63 		.ascii	"Welcome to BearPi!\000"
+  30      6F6D6520 
+  30      746F2042 
+  30      65617250 
+  30      692100
+  31 0013 00       		.align	2
+  32              	.LC1:
+  33 0014 42656172 		.ascii	"BearPi-IoT Develop Board\000"
+  33      50692D49 
+  33      6F542044 
+  33      6576656C 
+  33      6F702042 
+  34 002d 000000   		.align	2
+  35              	.LC2:
+  36 0030 506F7765 		.ascii	"Powerd by Huawei LiteOS!\000"
+  36      72642062 
+  36      79204875 
+  36      61776569 
+  36      204C6974 
+  37 0049 000000   		.align	2
+  38              	.LC3:
+  39 004c 436F6E6E 		.ascii	"Connecting NET......\000"
+  39      65637469 
+  39      6E67204E 
+  39      45542E2E 
+  39      2E2E2E2E 
+  40              		.section	.text.HardWare_Init,"ax",%progbits
+  41              		.align	1
+  42              		.global	HardWare_Init
+  43              		.arch armv7e-m
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s 			page 2
+
+
+  44              		.syntax unified
+  45              		.thumb
+  46              		.thumb_func
+  47              		.fpu fpv4-sp-d16
+  49              	HardWare_Init:
+  50              	.LFB314:
+  51              		.file 1 "d:/1/123123/Src/main.c"
+   1:d:/1/123123/Src\main.c **** /*----------------------------------------------------------------------------
+   2:d:/1/123123/Src\main.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:d:/1/123123/Src\main.c ****  * All rights reserved.
+   4:d:/1/123123/Src\main.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:d:/1/123123/Src\main.c ****  * are permitted provided that the following conditions are met:
+   6:d:/1/123123/Src\main.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:d:/1/123123/Src\main.c ****  * conditions and the following disclaimer.
+   8:d:/1/123123/Src\main.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:d:/1/123123/Src\main.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:d:/1/123123/Src\main.c ****  * provided with the distribution.
+  11:d:/1/123123/Src\main.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:d:/1/123123/Src\main.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:d:/1/123123/Src\main.c ****  * permission.
+  14:d:/1/123123/Src\main.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:d:/1/123123/Src\main.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:d:/1/123123/Src\main.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:d:/1/123123/Src\main.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:d:/1/123123/Src\main.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:d:/1/123123/Src\main.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:d:/1/123123/Src\main.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:d:/1/123123/Src\main.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:d:/1/123123/Src\main.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:d:/1/123123/Src\main.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:d:/1/123123/Src\main.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:d:/1/123123/Src\main.c ****  *---------------------------------------------------------------------------*/
+  26:d:/1/123123/Src\main.c **** /*----------------------------------------------------------------------------
+  27:d:/1/123123/Src\main.c ****  * Notice of Export Control Law
+  28:d:/1/123123/Src\main.c ****  * ===============================================
+  29:d:/1/123123/Src\main.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:d:/1/123123/Src\main.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:d:/1/123123/Src\main.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:d:/1/123123/Src\main.c ****  * applicable export control laws and regulations.
+  33:d:/1/123123/Src\main.c ****  *---------------------------------------------------------------------------*/
+  34:d:/1/123123/Src\main.c **** #include "main.h"
+  35:d:/1/123123/Src\main.c **** #include "sys_init.h"
+  36:d:/1/123123/Src\main.c **** #include "mem.h"
+  37:d:/1/123123/Src\main.c **** 
+  38:d:/1/123123/Src\main.c **** #include "los_base.h"
+  39:d:/1/123123/Src\main.c **** #include "los_task.ph"
+  40:d:/1/123123/Src\main.c **** #include "los_typedef.h"
+  41:d:/1/123123/Src\main.c **** #include "los_sys.h"
+  42:d:/1/123123/Src\main.c **** 
+  43:d:/1/123123/Src\main.c **** #if defined (__CC_ARM)
+  44:d:/1/123123/Src\main.c **** extern char Image$$RW_IRAM1$$ZI$$Limit [];
+  45:d:/1/123123/Src\main.c **** extern char Image$$ARM_LIB_STACKHEAP$$Base [];
+  46:d:/1/123123/Src\main.c **** #elif defined (__GNUC__)
+  47:d:/1/123123/Src\main.c **** extern char __los_heap_addr_start__ [];
+  48:d:/1/123123/Src\main.c **** extern char __los_heap_addr_end__ [];
+  49:d:/1/123123/Src\main.c **** #else
+  50:d:/1/123123/Src\main.c **** #error "fix me"
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s 			page 3
+
+
+  51:d:/1/123123/Src\main.c **** #endif
+  52:d:/1/123123/Src\main.c **** 
+  53:d:/1/123123/Src\main.c **** const struct phys_mem system_phys_mem [] =
+  54:d:/1/123123/Src\main.c ****     {
+  55:d:/1/123123/Src\main.c **** #if defined (__CC_ARM)
+  56:d:/1/123123/Src\main.c ****         { Image$$RW_IRAM1$$ZI$$Limit, Image$$ARM_LIB_STACKHEAP$$Base },
+  57:d:/1/123123/Src\main.c **** #elif defined (__GNUC__)
+  58:d:/1/123123/Src\main.c ****         {(unsigned long) __los_heap_addr_start__,(unsigned long) __los_heap_addr_end__ },
+  59:d:/1/123123/Src\main.c **** #else
+  60:d:/1/123123/Src\main.c **** #error "fix me"
+  61:d:/1/123123/Src\main.c **** #endif
+  62:d:/1/123123/Src\main.c ****         { 0, 0 }
+  63:d:/1/123123/Src\main.c ****     };
+  64:d:/1/123123/Src\main.c **** 
+  65:d:/1/123123/Src\main.c **** VOID HardWare_Init(VOID)
+  66:d:/1/123123/Src\main.c **** {
+  52              		.loc 1 66 1
+  53              		.cfi_startproc
+  54              		@ args = 0, pretend = 0, frame = 0
+  55              		@ frame_needed = 1, uses_anonymous_args = 0
+  56 0000 80B5     		push	{r7, lr}
+  57              	.LCFI0:
+  58              		.cfi_def_cfa_offset 8
+  59              		.cfi_offset 7, -8
+  60              		.cfi_offset 14, -4
+  61 0002 82B0     		sub	sp, sp, #8
+  62              	.LCFI1:
+  63              		.cfi_def_cfa_offset 16
+  64 0004 02AF     		add	r7, sp, #8
+  65              	.LCFI2:
+  66              		.cfi_def_cfa 7, 8
+  67:d:/1/123123/Src\main.c **** 	HAL_Init();
+  67              		.loc 1 67 2
+  68 0006 FFF7FEFF 		bl	HAL_Init
+  68:d:/1/123123/Src\main.c **** 	/* Configure the system clock */
+  69:d:/1/123123/Src\main.c **** 	SystemClock_Config();
+  69              		.loc 1 69 2
+  70 000a FFF7FEFF 		bl	SystemClock_Config
+  70:d:/1/123123/Src\main.c **** 	MX_GPIO_Init();
+  71              		.loc 1 70 2
+  72 000e FFF7FEFF 		bl	MX_GPIO_Init
+  71:d:/1/123123/Src\main.c **** 	MX_I2C1_Init();
+  73              		.loc 1 71 2
+  74 0012 FFF7FEFF 		bl	MX_I2C1_Init
+  72:d:/1/123123/Src\main.c **** 	MX_SPI2_Init();
+  75              		.loc 1 72 2
+  76 0016 FFF7FEFF 		bl	MX_SPI2_Init
+  73:d:/1/123123/Src\main.c **** 	dwt_delay_init(SystemCoreClock);
+  77              		.loc 1 73 2
+  78 001a 1C4B     		ldr	r3, .L2
+  79 001c 1B68     		ldr	r3, [r3]
+  80 001e 1846     		mov	r0, r3
+  81 0020 FFF7FEFF 		bl	dwt_delay_init
+  74:d:/1/123123/Src\main.c **** 	LCD_Init();					
+  82              		.loc 1 74 2
+  83 0024 FFF7FEFF 		bl	LCD_Init
+  75:d:/1/123123/Src\main.c **** 	LCD_Clear(BLACK);
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s 			page 4
+
+
+  84              		.loc 1 75 2
+  85 0028 0020     		movs	r0, #0
+  86 002a FFF7FEFF 		bl	LCD_Clear
+  76:d:/1/123123/Src\main.c **** 	POINT_COLOR = GREEN;
+  87              		.loc 1 76 14
+  88 002e 184B     		ldr	r3, .L2+4
+  89 0030 4FF4FC62 		mov	r2, #2016
+  90 0034 1A80     		strh	r2, [r3]	@ movhi
+  77:d:/1/123123/Src\main.c **** 	LCD_ShowString(10, 50, 240, 24, 24, "Welcome to BearPi!");
+  91              		.loc 1 77 2
+  92 0036 174B     		ldr	r3, .L2+8
+  93 0038 0193     		str	r3, [sp, #4]
+  94 003a 1823     		movs	r3, #24
+  95 003c 0093     		str	r3, [sp]
+  96 003e 1823     		movs	r3, #24
+  97 0040 F022     		movs	r2, #240
+  98 0042 3221     		movs	r1, #50
+  99 0044 0A20     		movs	r0, #10
+ 100 0046 FFF7FEFF 		bl	LCD_ShowString
+  78:d:/1/123123/Src\main.c **** 	LCD_ShowString(20, 90, 240, 16, 16, "BearPi-IoT Develop Board");
+ 101              		.loc 1 78 2
+ 102 004a 134B     		ldr	r3, .L2+12
+ 103 004c 0193     		str	r3, [sp, #4]
+ 104 004e 1023     		movs	r3, #16
+ 105 0050 0093     		str	r3, [sp]
+ 106 0052 1023     		movs	r3, #16
+ 107 0054 F022     		movs	r2, #240
+ 108 0056 5A21     		movs	r1, #90
+ 109 0058 1420     		movs	r0, #20
+ 110 005a FFF7FEFF 		bl	LCD_ShowString
+  79:d:/1/123123/Src\main.c **** 	LCD_ShowString(20, 130, 240, 16, 16, "Powerd by Huawei LiteOS!");
+ 111              		.loc 1 79 2
+ 112 005e 0F4B     		ldr	r3, .L2+16
+ 113 0060 0193     		str	r3, [sp, #4]
+ 114 0062 1023     		movs	r3, #16
+ 115 0064 0093     		str	r3, [sp]
+ 116 0066 1023     		movs	r3, #16
+ 117 0068 F022     		movs	r2, #240
+ 118 006a 8221     		movs	r1, #130
+ 119 006c 1420     		movs	r0, #20
+ 120 006e FFF7FEFF 		bl	LCD_ShowString
+  80:d:/1/123123/Src\main.c **** 	LCD_ShowString(30, 170, 240, 16, 16, "Connecting NET......");
+ 121              		.loc 1 80 2
+ 122 0072 0B4B     		ldr	r3, .L2+20
+ 123 0074 0193     		str	r3, [sp, #4]
+ 124 0076 1023     		movs	r3, #16
+ 125 0078 0093     		str	r3, [sp]
+ 126 007a 1023     		movs	r3, #16
+ 127 007c F022     		movs	r2, #240
+ 128 007e AA21     		movs	r1, #170
+ 129 0080 1E20     		movs	r0, #30
+ 130 0082 FFF7FEFF 		bl	LCD_ShowString
+  81:d:/1/123123/Src\main.c **** 	
+  82:d:/1/123123/Src\main.c **** }
+ 131              		.loc 1 82 1
+ 132 0086 00BF     		nop
+ 133 0088 BD46     		mov	sp, r7
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s 			page 5
+
+
+ 134              	.LCFI3:
+ 135              		.cfi_def_cfa_register 13
+ 136              		@ sp needed
+ 137 008a 80BD     		pop	{r7, pc}
+ 138              	.L3:
+ 139              		.align	2
+ 140              	.L2:
+ 141 008c 00000000 		.word	SystemCoreClock
+ 142 0090 00000000 		.word	POINT_COLOR
+ 143 0094 00000000 		.word	.LC0
+ 144 0098 14000000 		.word	.LC1
+ 145 009c 30000000 		.word	.LC2
+ 146 00a0 4C000000 		.word	.LC3
+ 147              		.cfi_endproc
+ 148              	.LFE314:
+ 150              		.section	.rodata
+ 151 0061 000000   		.align	2
+ 152              	.LC4:
+ 153 0064 6C696E6B 		.ascii	"link_main\000"
+ 153      5F6D6169 
+ 153      6E00
+ 154              		.section	.text.link_test,"ax",%progbits
+ 155              		.align	1
+ 156              		.syntax unified
+ 157              		.thumb
+ 158              		.thumb_func
+ 159              		.fpu fpv4-sp-d16
+ 161              	link_test:
+ 162              	.LFB315:
+  83:d:/1/123123/Src\main.c **** 
+  84:d:/1/123123/Src\main.c **** extern int link_main(void *args);
+  85:d:/1/123123/Src\main.c **** static int link_test()
+  86:d:/1/123123/Src\main.c **** {
+ 163              		.loc 1 86 1
+ 164              		.cfi_startproc
+ 165              		@ args = 0, pretend = 0, frame = 40
+ 166              		@ frame_needed = 1, uses_anonymous_args = 0
+ 167 0000 80B5     		push	{r7, lr}
+ 168              	.LCFI4:
+ 169              		.cfi_def_cfa_offset 8
+ 170              		.cfi_offset 7, -8
+ 171              		.cfi_offset 14, -4
+ 172 0002 8AB0     		sub	sp, sp, #40
+ 173              	.LCFI5:
+ 174              		.cfi_def_cfa_offset 48
+ 175 0004 00AF     		add	r7, sp, #0
+ 176              	.LCFI6:
+ 177              		.cfi_def_cfa_register 7
+  87:d:/1/123123/Src\main.c ****     int ret = -1;
+ 178              		.loc 1 87 9
+ 179 0006 4FF0FF33 		mov	r3, #-1
+ 180 000a 7B62     		str	r3, [r7, #36]
+  88:d:/1/123123/Src\main.c ****     UINT32 uwRet = LOS_OK;
+ 181              		.loc 1 88 12
+ 182 000c 0023     		movs	r3, #0
+ 183 000e 3B62     		str	r3, [r7, #32]
+  89:d:/1/123123/Src\main.c ****     UINT32  handle;
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s 			page 6
+
+
+  90:d:/1/123123/Src\main.c ****     TSK_INIT_PARAM_S task_init_param;
+  91:d:/1/123123/Src\main.c **** 
+  92:d:/1/123123/Src\main.c ****     memset (&task_init_param, 0, sizeof (TSK_INIT_PARAM_S));
+ 184              		.loc 1 92 5
+ 185 0010 3B1D     		adds	r3, r7, #4
+ 186 0012 1822     		movs	r2, #24
+ 187 0014 0021     		movs	r1, #0
+ 188 0016 1846     		mov	r0, r3
+ 189 0018 FFF7FEFF 		bl	memset
+  93:d:/1/123123/Src\main.c ****     task_init_param.uwArg = (unsigned int)NULL;
+ 190              		.loc 1 93 27
+ 191 001c 0023     		movs	r3, #0
+ 192 001e FB60     		str	r3, [r7, #12]
+  94:d:/1/123123/Src\main.c ****     task_init_param.usTaskPrio = 2;
+ 193              		.loc 1 94 32
+ 194 0020 0223     		movs	r3, #2
+ 195 0022 3B81     		strh	r3, [r7, #8]	@ movhi
+  95:d:/1/123123/Src\main.c ****     task_init_param.pcName =(char *) "link_main";
+ 196              		.loc 1 95 28
+ 197 0024 0C4B     		ldr	r3, .L7
+ 198 0026 7B61     		str	r3, [r7, #20]
+  96:d:/1/123123/Src\main.c ****     task_init_param.pfnTaskEntry = (TSK_ENTRY_FUNC)link_main;
+ 199              		.loc 1 96 34
+ 200 0028 0C4B     		ldr	r3, .L7+4
+ 201 002a 7B60     		str	r3, [r7, #4]
+  97:d:/1/123123/Src\main.c ****     task_init_param.uwStackSize = 0x1000;
+ 202              		.loc 1 97 33
+ 203 002c 4FF48053 		mov	r3, #4096
+ 204 0030 3B61     		str	r3, [r7, #16]
+  98:d:/1/123123/Src\main.c ****     uwRet = LOS_TaskCreate(&handle, &task_init_param);
+ 205              		.loc 1 98 13
+ 206 0032 3A1D     		adds	r2, r7, #4
+ 207 0034 07F11C03 		add	r3, r7, #28
+ 208 0038 1146     		mov	r1, r2
+ 209 003a 1846     		mov	r0, r3
+ 210 003c FFF7FEFF 		bl	LOS_TaskCreate
+ 211 0040 3862     		str	r0, [r7, #32]
+  99:d:/1/123123/Src\main.c ****     if(LOS_OK == uwRet){
+ 212              		.loc 1 99 7
+ 213 0042 3B6A     		ldr	r3, [r7, #32]
+ 214 0044 002B     		cmp	r3, #0
+ 215 0046 01D1     		bne	.L5
+ 100:d:/1/123123/Src\main.c ****         ret = 0;
+ 216              		.loc 1 100 13
+ 217 0048 0023     		movs	r3, #0
+ 218 004a 7B62     		str	r3, [r7, #36]
+ 219              	.L5:
+ 101:d:/1/123123/Src\main.c ****     }
+ 102:d:/1/123123/Src\main.c ****     return ret;
+ 220              		.loc 1 102 12
+ 221 004c 7B6A     		ldr	r3, [r7, #36]
+ 103:d:/1/123123/Src\main.c **** }
+ 222              		.loc 1 103 1
+ 223 004e 1846     		mov	r0, r3
+ 224 0050 2837     		adds	r7, r7, #40
+ 225              	.LCFI7:
+ 226              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s 			page 7
+
+
+ 227 0052 BD46     		mov	sp, r7
+ 228              	.LCFI8:
+ 229              		.cfi_def_cfa_register 13
+ 230              		@ sp needed
+ 231 0054 80BD     		pop	{r7, pc}
+ 232              	.L8:
+ 233 0056 00BF     		.align	2
+ 234              	.L7:
+ 235 0058 64000000 		.word	.LC4
+ 236 005c 00000000 		.word	link_main
+ 237              		.cfi_endproc
+ 238              	.LFE315:
+ 240              		.section	.text.main,"ax",%progbits
+ 241              		.align	1
+ 242              		.global	main
+ 243              		.syntax unified
+ 244              		.thumb
+ 245              		.thumb_func
+ 246              		.fpu fpv4-sp-d16
+ 248              	main:
+ 249              	.LFB316:
+ 104:d:/1/123123/Src\main.c **** 
+ 105:d:/1/123123/Src\main.c **** int main(void)
+ 106:d:/1/123123/Src\main.c **** {
+ 250              		.loc 1 106 1
+ 251              		.cfi_startproc
+ 252              		@ args = 0, pretend = 0, frame = 8
+ 253              		@ frame_needed = 1, uses_anonymous_args = 0
+ 254 0000 80B5     		push	{r7, lr}
+ 255              	.LCFI9:
+ 256              		.cfi_def_cfa_offset 8
+ 257              		.cfi_offset 7, -8
+ 258              		.cfi_offset 14, -4
+ 259 0002 82B0     		sub	sp, sp, #8
+ 260              	.LCFI10:
+ 261              		.cfi_def_cfa_offset 16
+ 262 0004 00AF     		add	r7, sp, #0
+ 263              	.LCFI11:
+ 264              		.cfi_def_cfa_register 7
+ 107:d:/1/123123/Src\main.c ****     UINT32 uwRet = LOS_OK;
+ 265              		.loc 1 107 12
+ 266 0006 0023     		movs	r3, #0
+ 267 0008 7B60     		str	r3, [r7, #4]
+ 108:d:/1/123123/Src\main.c ****     HardWare_Init();
+ 268              		.loc 1 108 5
+ 269 000a FFF7FEFF 		bl	HardWare_Init
+ 109:d:/1/123123/Src\main.c ****     uwRet = LOS_KernelInit();
+ 270              		.loc 1 109 13
+ 271 000e FFF7FEFF 		bl	LOS_KernelInit
+ 272 0012 7860     		str	r0, [r7, #4]
+ 110:d:/1/123123/Src\main.c ****     if (uwRet != LOS_OK)
+ 273              		.loc 1 110 8
+ 274 0014 7B68     		ldr	r3, [r7, #4]
+ 275 0016 002B     		cmp	r3, #0
+ 276 0018 01D0     		beq	.L10
+ 111:d:/1/123123/Src\main.c ****     {
+ 112:d:/1/123123/Src\main.c ****         return LOS_NOK;
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s 			page 8
+
+
+ 277              		.loc 1 112 16
+ 278 001a 0123     		movs	r3, #1
+ 279 001c 08E0     		b	.L11
+ 280              	.L10:
+ 113:d:/1/123123/Src\main.c ****     }
+ 114:d:/1/123123/Src\main.c **** 
+ 115:d:/1/123123/Src\main.c ****     extern void shell_uart_init(int baud);
+ 116:d:/1/123123/Src\main.c ****     shell_uart_init(115200);
+ 281              		.loc 1 116 5
+ 282 001e 4FF4E130 		mov	r0, #115200
+ 283 0022 FFF7FEFF 		bl	shell_uart_init
+ 117:d:/1/123123/Src\main.c **** 
+ 118:d:/1/123123/Src\main.c ****     link_test();
+ 284              		.loc 1 118 5
+ 285 0026 FFF7FEFF 		bl	link_test
+ 119:d:/1/123123/Src\main.c **** 
+ 120:d:/1/123123/Src\main.c ****     (void)LOS_Start();
+ 286              		.loc 1 120 11
+ 287 002a FFF7FEFF 		bl	LOS_Start
+ 121:d:/1/123123/Src\main.c ****     return 0;
+ 288              		.loc 1 121 12
+ 289 002e 0023     		movs	r3, #0
+ 290              	.L11:
+ 122:d:/1/123123/Src\main.c **** }
+ 291              		.loc 1 122 1
+ 292 0030 1846     		mov	r0, r3
+ 293 0032 0837     		adds	r7, r7, #8
+ 294              	.LCFI12:
+ 295              		.cfi_def_cfa_offset 8
+ 296 0034 BD46     		mov	sp, r7
+ 297              	.LCFI13:
+ 298              		.cfi_def_cfa_register 13
+ 299              		@ sp needed
+ 300 0036 80BD     		pop	{r7, pc}
+ 301              		.cfi_endproc
+ 302              	.LFE316:
+ 304              		.text
+ 305              	.Letext0:
+ 306              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\lib\\gcc\\arm-none-eabi
+ 307              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 308              		.file 4 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 309              		.file 5 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 310              		.file 6 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 311              		.file 7 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_typedef.h"
+ 312              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 313              		.file 9 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/common/cmsis/core_cm4.h"
+ 314              		.file 10 "d:/1/123123/Inc/system_stm32l4xx.h"
+ 315              		.file 11 "d:/1/123123/Inc/stm32l431xx.h"
+ 316              		.file 12 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ 317              		.file 13 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ 318              		.file 14 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ 319              		.file 15 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ 320              		.file 16 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ 321              		.file 17 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_config.h"
+ 322              		.file 18 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_list.h"
+ 323              		.file 19 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_err.h"
+ 324              		.file 20 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-m/include/los_hwi.h"
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s 			page 9
+
+
+ 325              		.file 21 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_event.h"
+ 326              		.file 22 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_tick.h"
+ 327              		.file 23 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_task.h"
+ 328              		.file 24 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/los_task.ph"
+ 329              		.file 25 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/los_slab.ph"
+ 330              		.file 26 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_memory.h"
+ 331              		.file 27 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/los_queue.ph"
+ 332              		.file 28 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include
+ 333              		.file 29 "d:/1/123123/Inc/usart.h"
+ 334              		.file 30 "d:/1/123123/Inc/i2c.h"
+ 335              		.file 31 "d:/1/123123/Inc/spi.h"
+ 336              		.file 32 "d:/1/123123/Hardware/LCD/lcd.h"
+ 337              		.file 33 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/list.h"
+ 338              		.file 34 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/chunk.h"
+ 339              		.file 35 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/cm-tlsf.h"
+ 340              		.file 36 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/heap.h"
+ 341              		.file 37 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/base/include/mem.h"
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s:22     .rodata.system_phys_mem:00000000 system_phys_mem
+C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s:19     .rodata.system_phys_mem:00000000 $d
+C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s:28     .rodata:00000000 $d
+C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s:41     .text.HardWare_Init:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s:49     .text.HardWare_Init:00000000 HardWare_Init
+C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s:141    .text.HardWare_Init:0000008c $d
+C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s:155    .text.link_test:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s:161    .text.link_test:00000000 link_test
+C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s:235    .text.link_test:00000058 $d
+C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s:241    .text.main:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccSjdE7P.s:248    .text.main:00000000 main
+
+UNDEFINED SYMBOLS
+__los_heap_addr_start__
+__los_heap_addr_end__
+HAL_Init
+SystemClock_Config
+MX_GPIO_Init
+MX_I2C1_Init
+MX_SPI2_Init
+dwt_delay_init
+LCD_Init
+LCD_Clear
+LCD_ShowString
+SystemCoreClock
+POINT_COLOR
+memset
+LOS_TaskCreate
+link_main
+LOS_KernelInit
+shell_uart_init
+LOS_Start

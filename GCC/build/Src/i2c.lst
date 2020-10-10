@@ -1,0 +1,1082 @@
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"i2c.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.comm	hi2c1,76,4
+  18              		.comm	hi2c2,76,4
+  19              		.comm	hi2c3,76,4
+  20              		.section	.rodata
+  21              		.align	2
+  22              	.LC0:
+  23 0000 643A2F31 		.ascii	"d:/1/123123/Src/i2c.c\000"
+  23      2F313233 
+  23      3132332F 
+  23      5372632F 
+  23      6932632E 
+  24              		.section	.text.MX_I2C1_Init,"ax",%progbits
+  25              		.align	1
+  26              		.global	MX_I2C1_Init
+  27              		.arch armv7e-m
+  28              		.syntax unified
+  29              		.thumb
+  30              		.thumb_func
+  31              		.fpu fpv4-sp-d16
+  33              	MX_I2C1_Init:
+  34              	.LFB287:
+  35              		.file 1 "d:/1/123123/Src/i2c.c"
+   1:d:/1/123123/Src\i2c.c **** /**
+   2:d:/1/123123/Src\i2c.c ****   ******************************************************************************
+   3:d:/1/123123/Src\i2c.c ****   * File Name          : I2C.c
+   4:d:/1/123123/Src\i2c.c ****   * Description        : This file provides code for the configuration
+   5:d:/1/123123/Src\i2c.c ****   *                      of the I2C instances.
+   6:d:/1/123123/Src\i2c.c ****   ******************************************************************************
+   7:d:/1/123123/Src\i2c.c ****   ** This notice applies to any and all portions of this file
+   8:d:/1/123123/Src\i2c.c ****   * that are not between comment pairs USER CODE BEGIN and
+   9:d:/1/123123/Src\i2c.c ****   * USER CODE END. Other portions of this file, whether 
+  10:d:/1/123123/Src\i2c.c ****   * inserted by the user or by software development tools
+  11:d:/1/123123/Src\i2c.c ****   * are owned by their respective copyright owners.
+  12:d:/1/123123/Src\i2c.c ****   *
+  13:d:/1/123123/Src\i2c.c ****   * COPYRIGHT(c) 2019 STMicroelectronics
+  14:d:/1/123123/Src\i2c.c ****   *
+  15:d:/1/123123/Src\i2c.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  16:d:/1/123123/Src\i2c.c ****   * are permitted provided that the following conditions are met:
+  17:d:/1/123123/Src\i2c.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  18:d:/1/123123/Src\i2c.c ****   *      this list of conditions and the following disclaimer.
+  19:d:/1/123123/Src\i2c.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 2
+
+
+  20:d:/1/123123/Src\i2c.c ****   *      this list of conditions and the following disclaimer in the documentation
+  21:d:/1/123123/Src\i2c.c ****   *      and/or other materials provided with the distribution.
+  22:d:/1/123123/Src\i2c.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  23:d:/1/123123/Src\i2c.c ****   *      may be used to endorse or promote products derived from this software
+  24:d:/1/123123/Src\i2c.c ****   *      without specific prior written permission.
+  25:d:/1/123123/Src\i2c.c ****   *
+  26:d:/1/123123/Src\i2c.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:d:/1/123123/Src\i2c.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  28:d:/1/123123/Src\i2c.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  29:d:/1/123123/Src\i2c.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  30:d:/1/123123/Src\i2c.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  31:d:/1/123123/Src\i2c.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  32:d:/1/123123/Src\i2c.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  33:d:/1/123123/Src\i2c.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  34:d:/1/123123/Src\i2c.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  35:d:/1/123123/Src\i2c.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  36:d:/1/123123/Src\i2c.c ****   *
+  37:d:/1/123123/Src\i2c.c ****   ******************************************************************************
+  38:d:/1/123123/Src\i2c.c ****   */
+  39:d:/1/123123/Src\i2c.c **** 
+  40:d:/1/123123/Src\i2c.c **** /* Includes ------------------------------------------------------------------*/
+  41:d:/1/123123/Src\i2c.c **** #include "i2c.h"
+  42:d:/1/123123/Src\i2c.c **** 
+  43:d:/1/123123/Src\i2c.c **** #include "gpio.h"
+  44:d:/1/123123/Src\i2c.c **** 
+  45:d:/1/123123/Src\i2c.c **** /* USER CODE BEGIN 0 */
+  46:d:/1/123123/Src\i2c.c **** 
+  47:d:/1/123123/Src\i2c.c **** /* USER CODE END 0 */
+  48:d:/1/123123/Src\i2c.c **** 
+  49:d:/1/123123/Src\i2c.c **** I2C_HandleTypeDef hi2c1;
+  50:d:/1/123123/Src\i2c.c **** I2C_HandleTypeDef hi2c2;
+  51:d:/1/123123/Src\i2c.c **** I2C_HandleTypeDef hi2c3;
+  52:d:/1/123123/Src\i2c.c **** 
+  53:d:/1/123123/Src\i2c.c **** /* I2C1 init function */
+  54:d:/1/123123/Src\i2c.c **** void MX_I2C1_Init(void)
+  55:d:/1/123123/Src\i2c.c **** {
+  36              		.loc 1 55 1
+  37              		.cfi_startproc
+  38              		@ args = 0, pretend = 0, frame = 0
+  39              		@ frame_needed = 1, uses_anonymous_args = 0
+  40 0000 80B5     		push	{r7, lr}
+  41              	.LCFI0:
+  42              		.cfi_def_cfa_offset 8
+  43              		.cfi_offset 7, -8
+  44              		.cfi_offset 14, -4
+  45 0002 00AF     		add	r7, sp, #0
+  46              	.LCFI1:
+  47              		.cfi_def_cfa_register 7
+  56:d:/1/123123/Src\i2c.c **** 
+  57:d:/1/123123/Src\i2c.c ****   hi2c1.Instance = I2C1;
+  48              		.loc 1 57 18
+  49 0004 1E4B     		ldr	r3, .L6
+  50 0006 1F4A     		ldr	r2, .L6+4
+  51 0008 1A60     		str	r2, [r3]
+  58:d:/1/123123/Src\i2c.c ****   hi2c1.Init.Timing = 0x10909CEC;
+  52              		.loc 1 58 21
+  53 000a 1D4B     		ldr	r3, .L6
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 3
+
+
+  54 000c 1E4A     		ldr	r2, .L6+8
+  55 000e 5A60     		str	r2, [r3, #4]
+  59:d:/1/123123/Src\i2c.c ****   hi2c1.Init.OwnAddress1 = 0;
+  56              		.loc 1 59 26
+  57 0010 1B4B     		ldr	r3, .L6
+  58 0012 0022     		movs	r2, #0
+  59 0014 9A60     		str	r2, [r3, #8]
+  60:d:/1/123123/Src\i2c.c ****   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  60              		.loc 1 60 29
+  61 0016 1A4B     		ldr	r3, .L6
+  62 0018 0122     		movs	r2, #1
+  63 001a DA60     		str	r2, [r3, #12]
+  61:d:/1/123123/Src\i2c.c ****   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+  64              		.loc 1 61 30
+  65 001c 184B     		ldr	r3, .L6
+  66 001e 0022     		movs	r2, #0
+  67 0020 1A61     		str	r2, [r3, #16]
+  62:d:/1/123123/Src\i2c.c ****   hi2c1.Init.OwnAddress2 = 0;
+  68              		.loc 1 62 26
+  69 0022 174B     		ldr	r3, .L6
+  70 0024 0022     		movs	r2, #0
+  71 0026 5A61     		str	r2, [r3, #20]
+  63:d:/1/123123/Src\i2c.c ****   hi2c1.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+  72              		.loc 1 63 31
+  73 0028 154B     		ldr	r3, .L6
+  74 002a 0022     		movs	r2, #0
+  75 002c 9A61     		str	r2, [r3, #24]
+  64:d:/1/123123/Src\i2c.c ****   hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  76              		.loc 1 64 30
+  77 002e 144B     		ldr	r3, .L6
+  78 0030 0022     		movs	r2, #0
+  79 0032 DA61     		str	r2, [r3, #28]
+  65:d:/1/123123/Src\i2c.c ****   hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  80              		.loc 1 65 28
+  81 0034 124B     		ldr	r3, .L6
+  82 0036 0022     		movs	r2, #0
+  83 0038 1A62     		str	r2, [r3, #32]
+  66:d:/1/123123/Src\i2c.c ****   if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+  84              		.loc 1 66 7
+  85 003a 1148     		ldr	r0, .L6
+  86 003c FFF7FEFF 		bl	HAL_I2C_Init
+  87 0040 0346     		mov	r3, r0
+  88              		.loc 1 66 6
+  89 0042 002B     		cmp	r3, #0
+  90 0044 03D0     		beq	.L2
+  67:d:/1/123123/Src\i2c.c ****   {
+  68:d:/1/123123/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+  91              		.loc 1 68 5
+  92 0046 4421     		movs	r1, #68
+  93 0048 1048     		ldr	r0, .L6+12
+  94 004a FFF7FEFF 		bl	_Error_Handler
+  95              	.L2:
+  69:d:/1/123123/Src\i2c.c ****   }
+  70:d:/1/123123/Src\i2c.c **** 
+  71:d:/1/123123/Src\i2c.c ****     /**Configure Analogue filter 
+  72:d:/1/123123/Src\i2c.c ****     */
+  73:d:/1/123123/Src\i2c.c ****   if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 4
+
+
+  96              		.loc 1 73 7
+  97 004e 0021     		movs	r1, #0
+  98 0050 0B48     		ldr	r0, .L6
+  99 0052 FFF7FEFF 		bl	HAL_I2CEx_ConfigAnalogFilter
+ 100 0056 0346     		mov	r3, r0
+ 101              		.loc 1 73 6
+ 102 0058 002B     		cmp	r3, #0
+ 103 005a 03D0     		beq	.L3
+  74:d:/1/123123/Src\i2c.c ****   {
+  75:d:/1/123123/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 104              		.loc 1 75 5
+ 105 005c 4B21     		movs	r1, #75
+ 106 005e 0B48     		ldr	r0, .L6+12
+ 107 0060 FFF7FEFF 		bl	_Error_Handler
+ 108              	.L3:
+  76:d:/1/123123/Src\i2c.c ****   }
+  77:d:/1/123123/Src\i2c.c **** 
+  78:d:/1/123123/Src\i2c.c ****     /**Configure Digital filter 
+  79:d:/1/123123/Src\i2c.c ****     */
+  80:d:/1/123123/Src\i2c.c ****   if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
+ 109              		.loc 1 80 7
+ 110 0064 0021     		movs	r1, #0
+ 111 0066 0648     		ldr	r0, .L6
+ 112 0068 FFF7FEFF 		bl	HAL_I2CEx_ConfigDigitalFilter
+ 113 006c 0346     		mov	r3, r0
+ 114              		.loc 1 80 6
+ 115 006e 002B     		cmp	r3, #0
+ 116 0070 03D0     		beq	.L5
+  81:d:/1/123123/Src\i2c.c ****   {
+  82:d:/1/123123/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 117              		.loc 1 82 5
+ 118 0072 5221     		movs	r1, #82
+ 119 0074 0548     		ldr	r0, .L6+12
+ 120 0076 FFF7FEFF 		bl	_Error_Handler
+ 121              	.L5:
+  83:d:/1/123123/Src\i2c.c ****   }
+  84:d:/1/123123/Src\i2c.c **** 
+  85:d:/1/123123/Src\i2c.c **** }
+ 122              		.loc 1 85 1
+ 123 007a 00BF     		nop
+ 124 007c 80BD     		pop	{r7, pc}
+ 125              	.L7:
+ 126 007e 00BF     		.align	2
+ 127              	.L6:
+ 128 0080 00000000 		.word	hi2c1
+ 129 0084 00540040 		.word	1073763328
+ 130 0088 EC9C9010 		.word	277912812
+ 131 008c 00000000 		.word	.LC0
+ 132              		.cfi_endproc
+ 133              	.LFE287:
+ 135              		.section	.text.MX_I2C2_Init,"ax",%progbits
+ 136              		.align	1
+ 137              		.global	MX_I2C2_Init
+ 138              		.syntax unified
+ 139              		.thumb
+ 140              		.thumb_func
+ 141              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 5
+
+
+ 143              	MX_I2C2_Init:
+ 144              	.LFB288:
+  86:d:/1/123123/Src\i2c.c **** /* I2C2 init function */
+  87:d:/1/123123/Src\i2c.c **** void MX_I2C2_Init(void)
+  88:d:/1/123123/Src\i2c.c **** {
+ 145              		.loc 1 88 1
+ 146              		.cfi_startproc
+ 147              		@ args = 0, pretend = 0, frame = 0
+ 148              		@ frame_needed = 1, uses_anonymous_args = 0
+ 149 0000 80B5     		push	{r7, lr}
+ 150              	.LCFI2:
+ 151              		.cfi_def_cfa_offset 8
+ 152              		.cfi_offset 7, -8
+ 153              		.cfi_offset 14, -4
+ 154 0002 00AF     		add	r7, sp, #0
+ 155              	.LCFI3:
+ 156              		.cfi_def_cfa_register 7
+  89:d:/1/123123/Src\i2c.c **** 
+  90:d:/1/123123/Src\i2c.c ****   hi2c2.Instance = I2C2;
+ 157              		.loc 1 90 18
+ 158 0004 1E4B     		ldr	r3, .L13
+ 159 0006 1F4A     		ldr	r2, .L13+4
+ 160 0008 1A60     		str	r2, [r3]
+  91:d:/1/123123/Src\i2c.c ****   hi2c2.Init.Timing = 0x10909CEC;
+ 161              		.loc 1 91 21
+ 162 000a 1D4B     		ldr	r3, .L13
+ 163 000c 1E4A     		ldr	r2, .L13+8
+ 164 000e 5A60     		str	r2, [r3, #4]
+  92:d:/1/123123/Src\i2c.c ****   hi2c2.Init.OwnAddress1 = 0;
+ 165              		.loc 1 92 26
+ 166 0010 1B4B     		ldr	r3, .L13
+ 167 0012 0022     		movs	r2, #0
+ 168 0014 9A60     		str	r2, [r3, #8]
+  93:d:/1/123123/Src\i2c.c ****   hi2c2.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+ 169              		.loc 1 93 29
+ 170 0016 1A4B     		ldr	r3, .L13
+ 171 0018 0122     		movs	r2, #1
+ 172 001a DA60     		str	r2, [r3, #12]
+  94:d:/1/123123/Src\i2c.c ****   hi2c2.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+ 173              		.loc 1 94 30
+ 174 001c 184B     		ldr	r3, .L13
+ 175 001e 0022     		movs	r2, #0
+ 176 0020 1A61     		str	r2, [r3, #16]
+  95:d:/1/123123/Src\i2c.c ****   hi2c2.Init.OwnAddress2 = 0;
+ 177              		.loc 1 95 26
+ 178 0022 174B     		ldr	r3, .L13
+ 179 0024 0022     		movs	r2, #0
+ 180 0026 5A61     		str	r2, [r3, #20]
+  96:d:/1/123123/Src\i2c.c ****   hi2c2.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+ 181              		.loc 1 96 31
+ 182 0028 154B     		ldr	r3, .L13
+ 183 002a 0022     		movs	r2, #0
+ 184 002c 9A61     		str	r2, [r3, #24]
+  97:d:/1/123123/Src\i2c.c ****   hi2c2.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+ 185              		.loc 1 97 30
+ 186 002e 144B     		ldr	r3, .L13
+ 187 0030 0022     		movs	r2, #0
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 6
+
+
+ 188 0032 DA61     		str	r2, [r3, #28]
+  98:d:/1/123123/Src\i2c.c ****   hi2c2.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+ 189              		.loc 1 98 28
+ 190 0034 124B     		ldr	r3, .L13
+ 191 0036 0022     		movs	r2, #0
+ 192 0038 1A62     		str	r2, [r3, #32]
+  99:d:/1/123123/Src\i2c.c ****   if (HAL_I2C_Init(&hi2c2) != HAL_OK)
+ 193              		.loc 1 99 7
+ 194 003a 1148     		ldr	r0, .L13
+ 195 003c FFF7FEFF 		bl	HAL_I2C_Init
+ 196 0040 0346     		mov	r3, r0
+ 197              		.loc 1 99 6
+ 198 0042 002B     		cmp	r3, #0
+ 199 0044 03D0     		beq	.L9
+ 100:d:/1/123123/Src\i2c.c ****   {
+ 101:d:/1/123123/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 200              		.loc 1 101 5
+ 201 0046 6521     		movs	r1, #101
+ 202 0048 1048     		ldr	r0, .L13+12
+ 203 004a FFF7FEFF 		bl	_Error_Handler
+ 204              	.L9:
+ 102:d:/1/123123/Src\i2c.c ****   }
+ 103:d:/1/123123/Src\i2c.c **** 
+ 104:d:/1/123123/Src\i2c.c ****     /**Configure Analogue filter 
+ 105:d:/1/123123/Src\i2c.c ****     */
+ 106:d:/1/123123/Src\i2c.c ****   if (HAL_I2CEx_ConfigAnalogFilter(&hi2c2, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+ 205              		.loc 1 106 7
+ 206 004e 0021     		movs	r1, #0
+ 207 0050 0B48     		ldr	r0, .L13
+ 208 0052 FFF7FEFF 		bl	HAL_I2CEx_ConfigAnalogFilter
+ 209 0056 0346     		mov	r3, r0
+ 210              		.loc 1 106 6
+ 211 0058 002B     		cmp	r3, #0
+ 212 005a 03D0     		beq	.L10
+ 107:d:/1/123123/Src\i2c.c ****   {
+ 108:d:/1/123123/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 213              		.loc 1 108 5
+ 214 005c 6C21     		movs	r1, #108
+ 215 005e 0B48     		ldr	r0, .L13+12
+ 216 0060 FFF7FEFF 		bl	_Error_Handler
+ 217              	.L10:
+ 109:d:/1/123123/Src\i2c.c ****   }
+ 110:d:/1/123123/Src\i2c.c **** 
+ 111:d:/1/123123/Src\i2c.c ****     /**Configure Digital filter 
+ 112:d:/1/123123/Src\i2c.c ****     */
+ 113:d:/1/123123/Src\i2c.c ****   if (HAL_I2CEx_ConfigDigitalFilter(&hi2c2, 0) != HAL_OK)
+ 218              		.loc 1 113 7
+ 219 0064 0021     		movs	r1, #0
+ 220 0066 0648     		ldr	r0, .L13
+ 221 0068 FFF7FEFF 		bl	HAL_I2CEx_ConfigDigitalFilter
+ 222 006c 0346     		mov	r3, r0
+ 223              		.loc 1 113 6
+ 224 006e 002B     		cmp	r3, #0
+ 225 0070 03D0     		beq	.L12
+ 114:d:/1/123123/Src\i2c.c ****   {
+ 115:d:/1/123123/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 226              		.loc 1 115 5
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 7
+
+
+ 227 0072 7321     		movs	r1, #115
+ 228 0074 0548     		ldr	r0, .L13+12
+ 229 0076 FFF7FEFF 		bl	_Error_Handler
+ 230              	.L12:
+ 116:d:/1/123123/Src\i2c.c ****   }
+ 117:d:/1/123123/Src\i2c.c **** 
+ 118:d:/1/123123/Src\i2c.c **** }
+ 231              		.loc 1 118 1
+ 232 007a 00BF     		nop
+ 233 007c 80BD     		pop	{r7, pc}
+ 234              	.L14:
+ 235 007e 00BF     		.align	2
+ 236              	.L13:
+ 237 0080 00000000 		.word	hi2c2
+ 238 0084 00580040 		.word	1073764352
+ 239 0088 EC9C9010 		.word	277912812
+ 240 008c 00000000 		.word	.LC0
+ 241              		.cfi_endproc
+ 242              	.LFE288:
+ 244              		.section	.text.MX_I2C3_Init,"ax",%progbits
+ 245              		.align	1
+ 246              		.global	MX_I2C3_Init
+ 247              		.syntax unified
+ 248              		.thumb
+ 249              		.thumb_func
+ 250              		.fpu fpv4-sp-d16
+ 252              	MX_I2C3_Init:
+ 253              	.LFB289:
+ 119:d:/1/123123/Src\i2c.c **** /* I2C3 init function */
+ 120:d:/1/123123/Src\i2c.c **** void MX_I2C3_Init(void)
+ 121:d:/1/123123/Src\i2c.c **** {
+ 254              		.loc 1 121 1
+ 255              		.cfi_startproc
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 1, uses_anonymous_args = 0
+ 258 0000 80B5     		push	{r7, lr}
+ 259              	.LCFI4:
+ 260              		.cfi_def_cfa_offset 8
+ 261              		.cfi_offset 7, -8
+ 262              		.cfi_offset 14, -4
+ 263 0002 00AF     		add	r7, sp, #0
+ 264              	.LCFI5:
+ 265              		.cfi_def_cfa_register 7
+ 122:d:/1/123123/Src\i2c.c **** 
+ 123:d:/1/123123/Src\i2c.c ****   hi2c3.Instance = I2C3;
+ 266              		.loc 1 123 18
+ 267 0004 1E4B     		ldr	r3, .L20
+ 268 0006 1F4A     		ldr	r2, .L20+4
+ 269 0008 1A60     		str	r2, [r3]
+ 124:d:/1/123123/Src\i2c.c ****   hi2c3.Init.Timing = 0x10909CEC;
+ 270              		.loc 1 124 21
+ 271 000a 1D4B     		ldr	r3, .L20
+ 272 000c 1E4A     		ldr	r2, .L20+8
+ 273 000e 5A60     		str	r2, [r3, #4]
+ 125:d:/1/123123/Src\i2c.c ****   hi2c3.Init.OwnAddress1 = 0;
+ 274              		.loc 1 125 26
+ 275 0010 1B4B     		ldr	r3, .L20
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 8
+
+
+ 276 0012 0022     		movs	r2, #0
+ 277 0014 9A60     		str	r2, [r3, #8]
+ 126:d:/1/123123/Src\i2c.c ****   hi2c3.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+ 278              		.loc 1 126 29
+ 279 0016 1A4B     		ldr	r3, .L20
+ 280 0018 0122     		movs	r2, #1
+ 281 001a DA60     		str	r2, [r3, #12]
+ 127:d:/1/123123/Src\i2c.c ****   hi2c3.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+ 282              		.loc 1 127 30
+ 283 001c 184B     		ldr	r3, .L20
+ 284 001e 0022     		movs	r2, #0
+ 285 0020 1A61     		str	r2, [r3, #16]
+ 128:d:/1/123123/Src\i2c.c ****   hi2c3.Init.OwnAddress2 = 0;
+ 286              		.loc 1 128 26
+ 287 0022 174B     		ldr	r3, .L20
+ 288 0024 0022     		movs	r2, #0
+ 289 0026 5A61     		str	r2, [r3, #20]
+ 129:d:/1/123123/Src\i2c.c ****   hi2c3.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+ 290              		.loc 1 129 31
+ 291 0028 154B     		ldr	r3, .L20
+ 292 002a 0022     		movs	r2, #0
+ 293 002c 9A61     		str	r2, [r3, #24]
+ 130:d:/1/123123/Src\i2c.c ****   hi2c3.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+ 294              		.loc 1 130 30
+ 295 002e 144B     		ldr	r3, .L20
+ 296 0030 0022     		movs	r2, #0
+ 297 0032 DA61     		str	r2, [r3, #28]
+ 131:d:/1/123123/Src\i2c.c ****   hi2c3.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+ 298              		.loc 1 131 28
+ 299 0034 124B     		ldr	r3, .L20
+ 300 0036 0022     		movs	r2, #0
+ 301 0038 1A62     		str	r2, [r3, #32]
+ 132:d:/1/123123/Src\i2c.c ****   if (HAL_I2C_Init(&hi2c3) != HAL_OK)
+ 302              		.loc 1 132 7
+ 303 003a 1148     		ldr	r0, .L20
+ 304 003c FFF7FEFF 		bl	HAL_I2C_Init
+ 305 0040 0346     		mov	r3, r0
+ 306              		.loc 1 132 6
+ 307 0042 002B     		cmp	r3, #0
+ 308 0044 03D0     		beq	.L16
+ 133:d:/1/123123/Src\i2c.c ****   {
+ 134:d:/1/123123/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 309              		.loc 1 134 5
+ 310 0046 8621     		movs	r1, #134
+ 311 0048 1048     		ldr	r0, .L20+12
+ 312 004a FFF7FEFF 		bl	_Error_Handler
+ 313              	.L16:
+ 135:d:/1/123123/Src\i2c.c ****   }
+ 136:d:/1/123123/Src\i2c.c **** 
+ 137:d:/1/123123/Src\i2c.c ****     /**Configure Analogue filter 
+ 138:d:/1/123123/Src\i2c.c ****     */
+ 139:d:/1/123123/Src\i2c.c ****   if (HAL_I2CEx_ConfigAnalogFilter(&hi2c3, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+ 314              		.loc 1 139 7
+ 315 004e 0021     		movs	r1, #0
+ 316 0050 0B48     		ldr	r0, .L20
+ 317 0052 FFF7FEFF 		bl	HAL_I2CEx_ConfigAnalogFilter
+ 318 0056 0346     		mov	r3, r0
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 9
+
+
+ 319              		.loc 1 139 6
+ 320 0058 002B     		cmp	r3, #0
+ 321 005a 03D0     		beq	.L17
+ 140:d:/1/123123/Src\i2c.c ****   {
+ 141:d:/1/123123/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 322              		.loc 1 141 5
+ 323 005c 8D21     		movs	r1, #141
+ 324 005e 0B48     		ldr	r0, .L20+12
+ 325 0060 FFF7FEFF 		bl	_Error_Handler
+ 326              	.L17:
+ 142:d:/1/123123/Src\i2c.c ****   }
+ 143:d:/1/123123/Src\i2c.c **** 
+ 144:d:/1/123123/Src\i2c.c ****     /**Configure Digital filter 
+ 145:d:/1/123123/Src\i2c.c ****     */
+ 146:d:/1/123123/Src\i2c.c ****   if (HAL_I2CEx_ConfigDigitalFilter(&hi2c3, 0) != HAL_OK)
+ 327              		.loc 1 146 7
+ 328 0064 0021     		movs	r1, #0
+ 329 0066 0648     		ldr	r0, .L20
+ 330 0068 FFF7FEFF 		bl	HAL_I2CEx_ConfigDigitalFilter
+ 331 006c 0346     		mov	r3, r0
+ 332              		.loc 1 146 6
+ 333 006e 002B     		cmp	r3, #0
+ 334 0070 03D0     		beq	.L19
+ 147:d:/1/123123/Src\i2c.c ****   {
+ 148:d:/1/123123/Src\i2c.c ****     _Error_Handler(__FILE__, __LINE__);
+ 335              		.loc 1 148 5
+ 336 0072 9421     		movs	r1, #148
+ 337 0074 0548     		ldr	r0, .L20+12
+ 338 0076 FFF7FEFF 		bl	_Error_Handler
+ 339              	.L19:
+ 149:d:/1/123123/Src\i2c.c ****   }
+ 150:d:/1/123123/Src\i2c.c **** 
+ 151:d:/1/123123/Src\i2c.c **** }
+ 340              		.loc 1 151 1
+ 341 007a 00BF     		nop
+ 342 007c 80BD     		pop	{r7, pc}
+ 343              	.L21:
+ 344 007e 00BF     		.align	2
+ 345              	.L20:
+ 346 0080 00000000 		.word	hi2c3
+ 347 0084 005C0040 		.word	1073765376
+ 348 0088 EC9C9010 		.word	277912812
+ 349 008c 00000000 		.word	.LC0
+ 350              		.cfi_endproc
+ 351              	.LFE289:
+ 353              		.section	.text.HAL_I2C_MspInit,"ax",%progbits
+ 354              		.align	1
+ 355              		.global	HAL_I2C_MspInit
+ 356              		.syntax unified
+ 357              		.thumb
+ 358              		.thumb_func
+ 359              		.fpu fpv4-sp-d16
+ 361              	HAL_I2C_MspInit:
+ 362              	.LFB290:
+ 152:d:/1/123123/Src\i2c.c **** 
+ 153:d:/1/123123/Src\i2c.c **** void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
+ 154:d:/1/123123/Src\i2c.c **** {
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 10
+
+
+ 363              		.loc 1 154 1
+ 364              		.cfi_startproc
+ 365              		@ args = 0, pretend = 0, frame = 40
+ 366              		@ frame_needed = 1, uses_anonymous_args = 0
+ 367 0000 80B5     		push	{r7, lr}
+ 368              	.LCFI6:
+ 369              		.cfi_def_cfa_offset 8
+ 370              		.cfi_offset 7, -8
+ 371              		.cfi_offset 14, -4
+ 372 0002 8AB0     		sub	sp, sp, #40
+ 373              	.LCFI7:
+ 374              		.cfi_def_cfa_offset 48
+ 375 0004 00AF     		add	r7, sp, #0
+ 376              	.LCFI8:
+ 377              		.cfi_def_cfa_register 7
+ 378 0006 7860     		str	r0, [r7, #4]
+ 155:d:/1/123123/Src\i2c.c **** 
+ 156:d:/1/123123/Src\i2c.c ****   GPIO_InitTypeDef GPIO_InitStruct;
+ 157:d:/1/123123/Src\i2c.c ****   if(i2cHandle->Instance==I2C1)
+ 379              		.loc 1 157 15
+ 380 0008 7B68     		ldr	r3, [r7, #4]
+ 381 000a 1B68     		ldr	r3, [r3]
+ 382              		.loc 1 157 5
+ 383 000c 3C4A     		ldr	r2, .L27
+ 384 000e 9342     		cmp	r3, r2
+ 385 0010 1CD1     		bne	.L23
+ 158:d:/1/123123/Src\i2c.c ****   {
+ 159:d:/1/123123/Src\i2c.c ****   /* USER CODE BEGIN I2C1_MspInit 0 */
+ 160:d:/1/123123/Src\i2c.c **** 
+ 161:d:/1/123123/Src\i2c.c ****   /* USER CODE END I2C1_MspInit 0 */
+ 162:d:/1/123123/Src\i2c.c ****   
+ 163:d:/1/123123/Src\i2c.c ****     /**I2C1 GPIO Configuration    
+ 164:d:/1/123123/Src\i2c.c ****     PB6     ------> I2C1_SCL
+ 165:d:/1/123123/Src\i2c.c ****     PB7     ------> I2C1_SDA 
+ 166:d:/1/123123/Src\i2c.c ****     */
+ 167:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_7;
+ 386              		.loc 1 167 25
+ 387 0012 C023     		movs	r3, #192
+ 388 0014 7B61     		str	r3, [r7, #20]
+ 168:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 389              		.loc 1 168 26
+ 390 0016 1223     		movs	r3, #18
+ 391 0018 BB61     		str	r3, [r7, #24]
+ 169:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 392              		.loc 1 169 26
+ 393 001a 0123     		movs	r3, #1
+ 394 001c FB61     		str	r3, [r7, #28]
+ 170:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 395              		.loc 1 170 27
+ 396 001e 0323     		movs	r3, #3
+ 397 0020 3B62     		str	r3, [r7, #32]
+ 171:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
+ 398              		.loc 1 171 31
+ 399 0022 0423     		movs	r3, #4
+ 400 0024 7B62     		str	r3, [r7, #36]
+ 172:d:/1/123123/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 401              		.loc 1 172 5
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 11
+
+
+ 402 0026 07F11403 		add	r3, r7, #20
+ 403 002a 1946     		mov	r1, r3
+ 404 002c 3548     		ldr	r0, .L27+4
+ 405 002e FFF7FEFF 		bl	HAL_GPIO_Init
+ 406              	.LBB2:
+ 173:d:/1/123123/Src\i2c.c **** 
+ 174:d:/1/123123/Src\i2c.c ****     /* I2C1 clock enable */
+ 175:d:/1/123123/Src\i2c.c ****     __HAL_RCC_I2C1_CLK_ENABLE();
+ 407              		.loc 1 175 5
+ 408 0032 354B     		ldr	r3, .L27+8
+ 409 0034 9B6D     		ldr	r3, [r3, #88]
+ 410 0036 344A     		ldr	r2, .L27+8
+ 411 0038 43F40013 		orr	r3, r3, #2097152
+ 412 003c 9365     		str	r3, [r2, #88]
+ 413 003e 324B     		ldr	r3, .L27+8
+ 414 0040 9B6D     		ldr	r3, [r3, #88]
+ 415 0042 03F40013 		and	r3, r3, #2097152
+ 416 0046 3B61     		str	r3, [r7, #16]
+ 417 0048 3B69     		ldr	r3, [r7, #16]
+ 418              	.LBE2:
+ 176:d:/1/123123/Src\i2c.c ****   /* USER CODE BEGIN I2C1_MspInit 1 */
+ 177:d:/1/123123/Src\i2c.c **** 
+ 178:d:/1/123123/Src\i2c.c ****   /* USER CODE END I2C1_MspInit 1 */
+ 179:d:/1/123123/Src\i2c.c ****   }
+ 180:d:/1/123123/Src\i2c.c ****   else if(i2cHandle->Instance==I2C2)
+ 181:d:/1/123123/Src\i2c.c ****   {
+ 182:d:/1/123123/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspInit 0 */
+ 183:d:/1/123123/Src\i2c.c **** 
+ 184:d:/1/123123/Src\i2c.c ****   /* USER CODE END I2C2_MspInit 0 */
+ 185:d:/1/123123/Src\i2c.c ****   
+ 186:d:/1/123123/Src\i2c.c ****     /**I2C2 GPIO Configuration    
+ 187:d:/1/123123/Src\i2c.c ****     PB10     ------> I2C2_SCL
+ 188:d:/1/123123/Src\i2c.c ****     PB14     ------> I2C2_SDA 
+ 189:d:/1/123123/Src\i2c.c ****     */
+ 190:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_14;
+ 191:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 192:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 193:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 194:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C2;
+ 195:d:/1/123123/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 196:d:/1/123123/Src\i2c.c **** 
+ 197:d:/1/123123/Src\i2c.c ****     /* I2C2 clock enable */
+ 198:d:/1/123123/Src\i2c.c ****     __HAL_RCC_I2C2_CLK_ENABLE();
+ 199:d:/1/123123/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspInit 1 */
+ 200:d:/1/123123/Src\i2c.c **** 
+ 201:d:/1/123123/Src\i2c.c ****   /* USER CODE END I2C2_MspInit 1 */
+ 202:d:/1/123123/Src\i2c.c ****   }
+ 203:d:/1/123123/Src\i2c.c ****   else if(i2cHandle->Instance==I2C3)
+ 204:d:/1/123123/Src\i2c.c ****   {
+ 205:d:/1/123123/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspInit 0 */
+ 206:d:/1/123123/Src\i2c.c **** 
+ 207:d:/1/123123/Src\i2c.c ****   /* USER CODE END I2C3_MspInit 0 */
+ 208:d:/1/123123/Src\i2c.c ****   
+ 209:d:/1/123123/Src\i2c.c ****     /**I2C3 GPIO Configuration    
+ 210:d:/1/123123/Src\i2c.c ****     PA7     ------> I2C3_SCL
+ 211:d:/1/123123/Src\i2c.c ****     PB4 (NJTRST)     ------> I2C3_SDA 
+ 212:d:/1/123123/Src\i2c.c ****     */
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 12
+
+
+ 213:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Pin = GPIO_PIN_7;
+ 214:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 215:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 216:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 217:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C3;
+ 218:d:/1/123123/Src\i2c.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 219:d:/1/123123/Src\i2c.c **** 
+ 220:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Pin = GPIO_PIN_4;
+ 221:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 222:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 223:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 224:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C3;
+ 225:d:/1/123123/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 226:d:/1/123123/Src\i2c.c **** 
+ 227:d:/1/123123/Src\i2c.c ****     /* I2C3 clock enable */
+ 228:d:/1/123123/Src\i2c.c ****     __HAL_RCC_I2C3_CLK_ENABLE();
+ 229:d:/1/123123/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspInit 1 */
+ 230:d:/1/123123/Src\i2c.c **** 
+ 231:d:/1/123123/Src\i2c.c ****   /* USER CODE END I2C3_MspInit 1 */
+ 232:d:/1/123123/Src\i2c.c ****   }
+ 233:d:/1/123123/Src\i2c.c **** }
+ 419              		.loc 1 233 1
+ 420 004a 54E0     		b	.L26
+ 421              	.L23:
+ 180:d:/1/123123/Src\i2c.c ****   {
+ 422              		.loc 1 180 20
+ 423 004c 7B68     		ldr	r3, [r7, #4]
+ 424 004e 1B68     		ldr	r3, [r3]
+ 180:d:/1/123123/Src\i2c.c ****   {
+ 425              		.loc 1 180 10
+ 426 0050 2E4A     		ldr	r2, .L27+12
+ 427 0052 9342     		cmp	r3, r2
+ 428 0054 1DD1     		bne	.L25
+ 190:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 429              		.loc 1 190 25
+ 430 0056 4FF48843 		mov	r3, #17408
+ 431 005a 7B61     		str	r3, [r7, #20]
+ 191:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 432              		.loc 1 191 26
+ 433 005c 1223     		movs	r3, #18
+ 434 005e BB61     		str	r3, [r7, #24]
+ 192:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 435              		.loc 1 192 26
+ 436 0060 0123     		movs	r3, #1
+ 437 0062 FB61     		str	r3, [r7, #28]
+ 193:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C2;
+ 438              		.loc 1 193 27
+ 439 0064 0323     		movs	r3, #3
+ 440 0066 3B62     		str	r3, [r7, #32]
+ 194:d:/1/123123/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 441              		.loc 1 194 31
+ 442 0068 0423     		movs	r3, #4
+ 443 006a 7B62     		str	r3, [r7, #36]
+ 195:d:/1/123123/Src\i2c.c **** 
+ 444              		.loc 1 195 5
+ 445 006c 07F11403 		add	r3, r7, #20
+ 446 0070 1946     		mov	r1, r3
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 13
+
+
+ 447 0072 2448     		ldr	r0, .L27+4
+ 448 0074 FFF7FEFF 		bl	HAL_GPIO_Init
+ 449              	.LBB3:
+ 198:d:/1/123123/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspInit 1 */
+ 450              		.loc 1 198 5
+ 451 0078 234B     		ldr	r3, .L27+8
+ 452 007a 9B6D     		ldr	r3, [r3, #88]
+ 453 007c 224A     		ldr	r2, .L27+8
+ 454 007e 43F48003 		orr	r3, r3, #4194304
+ 455 0082 9365     		str	r3, [r2, #88]
+ 456 0084 204B     		ldr	r3, .L27+8
+ 457 0086 9B6D     		ldr	r3, [r3, #88]
+ 458 0088 03F48003 		and	r3, r3, #4194304
+ 459 008c FB60     		str	r3, [r7, #12]
+ 460 008e FB68     		ldr	r3, [r7, #12]
+ 461              	.LBE3:
+ 462              		.loc 1 233 1
+ 463 0090 31E0     		b	.L26
+ 464              	.L25:
+ 203:d:/1/123123/Src\i2c.c ****   {
+ 465              		.loc 1 203 20
+ 466 0092 7B68     		ldr	r3, [r7, #4]
+ 467 0094 1B68     		ldr	r3, [r3]
+ 203:d:/1/123123/Src\i2c.c ****   {
+ 468              		.loc 1 203 10
+ 469 0096 1E4A     		ldr	r2, .L27+16
+ 470 0098 9342     		cmp	r3, r2
+ 471 009a 2CD1     		bne	.L26
+ 213:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 472              		.loc 1 213 25
+ 473 009c 8023     		movs	r3, #128
+ 474 009e 7B61     		str	r3, [r7, #20]
+ 214:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 475              		.loc 1 214 26
+ 476 00a0 1223     		movs	r3, #18
+ 477 00a2 BB61     		str	r3, [r7, #24]
+ 215:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 478              		.loc 1 215 26
+ 479 00a4 0123     		movs	r3, #1
+ 480 00a6 FB61     		str	r3, [r7, #28]
+ 216:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C3;
+ 481              		.loc 1 216 27
+ 482 00a8 0323     		movs	r3, #3
+ 483 00aa 3B62     		str	r3, [r7, #32]
+ 217:d:/1/123123/Src\i2c.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 484              		.loc 1 217 31
+ 485 00ac 0423     		movs	r3, #4
+ 486 00ae 7B62     		str	r3, [r7, #36]
+ 218:d:/1/123123/Src\i2c.c **** 
+ 487              		.loc 1 218 5
+ 488 00b0 07F11403 		add	r3, r7, #20
+ 489 00b4 1946     		mov	r1, r3
+ 490 00b6 4FF09040 		mov	r0, #1207959552
+ 491 00ba FFF7FEFF 		bl	HAL_GPIO_Init
+ 220:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 492              		.loc 1 220 25
+ 493 00be 1023     		movs	r3, #16
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 14
+
+
+ 494 00c0 7B61     		str	r3, [r7, #20]
+ 221:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 495              		.loc 1 221 26
+ 496 00c2 1223     		movs	r3, #18
+ 497 00c4 BB61     		str	r3, [r7, #24]
+ 222:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 498              		.loc 1 222 26
+ 499 00c6 0123     		movs	r3, #1
+ 500 00c8 FB61     		str	r3, [r7, #28]
+ 223:d:/1/123123/Src\i2c.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C3;
+ 501              		.loc 1 223 27
+ 502 00ca 0323     		movs	r3, #3
+ 503 00cc 3B62     		str	r3, [r7, #32]
+ 224:d:/1/123123/Src\i2c.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 504              		.loc 1 224 31
+ 505 00ce 0423     		movs	r3, #4
+ 506 00d0 7B62     		str	r3, [r7, #36]
+ 225:d:/1/123123/Src\i2c.c **** 
+ 507              		.loc 1 225 5
+ 508 00d2 07F11403 		add	r3, r7, #20
+ 509 00d6 1946     		mov	r1, r3
+ 510 00d8 0A48     		ldr	r0, .L27+4
+ 511 00da FFF7FEFF 		bl	HAL_GPIO_Init
+ 512              	.LBB4:
+ 228:d:/1/123123/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspInit 1 */
+ 513              		.loc 1 228 5
+ 514 00de 0A4B     		ldr	r3, .L27+8
+ 515 00e0 9B6D     		ldr	r3, [r3, #88]
+ 516 00e2 094A     		ldr	r2, .L27+8
+ 517 00e4 43F40003 		orr	r3, r3, #8388608
+ 518 00e8 9365     		str	r3, [r2, #88]
+ 519 00ea 074B     		ldr	r3, .L27+8
+ 520 00ec 9B6D     		ldr	r3, [r3, #88]
+ 521 00ee 03F40003 		and	r3, r3, #8388608
+ 522 00f2 BB60     		str	r3, [r7, #8]
+ 523 00f4 BB68     		ldr	r3, [r7, #8]
+ 524              	.L26:
+ 525              	.LBE4:
+ 526              		.loc 1 233 1
+ 527 00f6 00BF     		nop
+ 528 00f8 2837     		adds	r7, r7, #40
+ 529              	.LCFI9:
+ 530              		.cfi_def_cfa_offset 8
+ 531 00fa BD46     		mov	sp, r7
+ 532              	.LCFI10:
+ 533              		.cfi_def_cfa_register 13
+ 534              		@ sp needed
+ 535 00fc 80BD     		pop	{r7, pc}
+ 536              	.L28:
+ 537 00fe 00BF     		.align	2
+ 538              	.L27:
+ 539 0100 00540040 		.word	1073763328
+ 540 0104 00040048 		.word	1207960576
+ 541 0108 00100240 		.word	1073876992
+ 542 010c 00580040 		.word	1073764352
+ 543 0110 005C0040 		.word	1073765376
+ 544              		.cfi_endproc
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 15
+
+
+ 545              	.LFE290:
+ 547              		.section	.text.HAL_I2C_MspDeInit,"ax",%progbits
+ 548              		.align	1
+ 549              		.global	HAL_I2C_MspDeInit
+ 550              		.syntax unified
+ 551              		.thumb
+ 552              		.thumb_func
+ 553              		.fpu fpv4-sp-d16
+ 555              	HAL_I2C_MspDeInit:
+ 556              	.LFB291:
+ 234:d:/1/123123/Src\i2c.c **** 
+ 235:d:/1/123123/Src\i2c.c **** void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
+ 236:d:/1/123123/Src\i2c.c **** {
+ 557              		.loc 1 236 1
+ 558              		.cfi_startproc
+ 559              		@ args = 0, pretend = 0, frame = 8
+ 560              		@ frame_needed = 1, uses_anonymous_args = 0
+ 561 0000 80B5     		push	{r7, lr}
+ 562              	.LCFI11:
+ 563              		.cfi_def_cfa_offset 8
+ 564              		.cfi_offset 7, -8
+ 565              		.cfi_offset 14, -4
+ 566 0002 82B0     		sub	sp, sp, #8
+ 567              	.LCFI12:
+ 568              		.cfi_def_cfa_offset 16
+ 569 0004 00AF     		add	r7, sp, #0
+ 570              	.LCFI13:
+ 571              		.cfi_def_cfa_register 7
+ 572 0006 7860     		str	r0, [r7, #4]
+ 237:d:/1/123123/Src\i2c.c **** 
+ 238:d:/1/123123/Src\i2c.c ****   if(i2cHandle->Instance==I2C1)
+ 573              		.loc 1 238 15
+ 574 0008 7B68     		ldr	r3, [r7, #4]
+ 575 000a 1B68     		ldr	r3, [r3]
+ 576              		.loc 1 238 5
+ 577 000c 1B4A     		ldr	r2, .L34
+ 578 000e 9342     		cmp	r3, r2
+ 579 0010 0AD1     		bne	.L30
+ 239:d:/1/123123/Src\i2c.c ****   {
+ 240:d:/1/123123/Src\i2c.c ****   /* USER CODE BEGIN I2C1_MspDeInit 0 */
+ 241:d:/1/123123/Src\i2c.c **** 
+ 242:d:/1/123123/Src\i2c.c ****   /* USER CODE END I2C1_MspDeInit 0 */
+ 243:d:/1/123123/Src\i2c.c ****     /* Peripheral clock disable */
+ 244:d:/1/123123/Src\i2c.c ****     __HAL_RCC_I2C1_CLK_DISABLE();
+ 580              		.loc 1 244 5
+ 581 0012 1B4B     		ldr	r3, .L34+4
+ 582 0014 9B6D     		ldr	r3, [r3, #88]
+ 583 0016 1A4A     		ldr	r2, .L34+4
+ 584 0018 23F40013 		bic	r3, r3, #2097152
+ 585 001c 9365     		str	r3, [r2, #88]
+ 245:d:/1/123123/Src\i2c.c ****   
+ 246:d:/1/123123/Src\i2c.c ****     /**I2C1 GPIO Configuration    
+ 247:d:/1/123123/Src\i2c.c ****     PB6     ------> I2C1_SCL
+ 248:d:/1/123123/Src\i2c.c ****     PB7     ------> I2C1_SDA 
+ 249:d:/1/123123/Src\i2c.c ****     */
+ 250:d:/1/123123/Src\i2c.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_6|GPIO_PIN_7);
+ 586              		.loc 1 250 5
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 16
+
+
+ 587 001e C021     		movs	r1, #192
+ 588 0020 1848     		ldr	r0, .L34+8
+ 589 0022 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 251:d:/1/123123/Src\i2c.c **** 
+ 252:d:/1/123123/Src\i2c.c ****   /* USER CODE BEGIN I2C1_MspDeInit 1 */
+ 253:d:/1/123123/Src\i2c.c **** 
+ 254:d:/1/123123/Src\i2c.c ****   /* USER CODE END I2C1_MspDeInit 1 */
+ 255:d:/1/123123/Src\i2c.c ****   }
+ 256:d:/1/123123/Src\i2c.c ****   else if(i2cHandle->Instance==I2C2)
+ 257:d:/1/123123/Src\i2c.c ****   {
+ 258:d:/1/123123/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspDeInit 0 */
+ 259:d:/1/123123/Src\i2c.c **** 
+ 260:d:/1/123123/Src\i2c.c ****   /* USER CODE END I2C2_MspDeInit 0 */
+ 261:d:/1/123123/Src\i2c.c ****     /* Peripheral clock disable */
+ 262:d:/1/123123/Src\i2c.c ****     __HAL_RCC_I2C2_CLK_DISABLE();
+ 263:d:/1/123123/Src\i2c.c ****   
+ 264:d:/1/123123/Src\i2c.c ****     /**I2C2 GPIO Configuration    
+ 265:d:/1/123123/Src\i2c.c ****     PB10     ------> I2C2_SCL
+ 266:d:/1/123123/Src\i2c.c ****     PB14     ------> I2C2_SDA 
+ 267:d:/1/123123/Src\i2c.c ****     */
+ 268:d:/1/123123/Src\i2c.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_10|GPIO_PIN_14);
+ 269:d:/1/123123/Src\i2c.c **** 
+ 270:d:/1/123123/Src\i2c.c ****   /* USER CODE BEGIN I2C2_MspDeInit 1 */
+ 271:d:/1/123123/Src\i2c.c **** 
+ 272:d:/1/123123/Src\i2c.c ****   /* USER CODE END I2C2_MspDeInit 1 */
+ 273:d:/1/123123/Src\i2c.c ****   }
+ 274:d:/1/123123/Src\i2c.c ****   else if(i2cHandle->Instance==I2C3)
+ 275:d:/1/123123/Src\i2c.c ****   {
+ 276:d:/1/123123/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspDeInit 0 */
+ 277:d:/1/123123/Src\i2c.c **** 
+ 278:d:/1/123123/Src\i2c.c ****   /* USER CODE END I2C3_MspDeInit 0 */
+ 279:d:/1/123123/Src\i2c.c ****     /* Peripheral clock disable */
+ 280:d:/1/123123/Src\i2c.c ****     __HAL_RCC_I2C3_CLK_DISABLE();
+ 281:d:/1/123123/Src\i2c.c ****   
+ 282:d:/1/123123/Src\i2c.c ****     /**I2C3 GPIO Configuration    
+ 283:d:/1/123123/Src\i2c.c ****     PA7     ------> I2C3_SCL
+ 284:d:/1/123123/Src\i2c.c ****     PB4 (NJTRST)     ------> I2C3_SDA 
+ 285:d:/1/123123/Src\i2c.c ****     */
+ 286:d:/1/123123/Src\i2c.c ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_7);
+ 287:d:/1/123123/Src\i2c.c **** 
+ 288:d:/1/123123/Src\i2c.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_4);
+ 289:d:/1/123123/Src\i2c.c **** 
+ 290:d:/1/123123/Src\i2c.c ****   /* USER CODE BEGIN I2C3_MspDeInit 1 */
+ 291:d:/1/123123/Src\i2c.c **** 
+ 292:d:/1/123123/Src\i2c.c ****   /* USER CODE END I2C3_MspDeInit 1 */
+ 293:d:/1/123123/Src\i2c.c ****   }
+ 294:d:/1/123123/Src\i2c.c **** } 
+ 590              		.loc 1 294 1
+ 591 0026 24E0     		b	.L33
+ 592              	.L30:
+ 256:d:/1/123123/Src\i2c.c ****   {
+ 593              		.loc 1 256 20
+ 594 0028 7B68     		ldr	r3, [r7, #4]
+ 595 002a 1B68     		ldr	r3, [r3]
+ 256:d:/1/123123/Src\i2c.c ****   {
+ 596              		.loc 1 256 10
+ 597 002c 164A     		ldr	r2, .L34+12
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 17
+
+
+ 598 002e 9342     		cmp	r3, r2
+ 599 0030 0BD1     		bne	.L32
+ 262:d:/1/123123/Src\i2c.c ****   
+ 600              		.loc 1 262 5
+ 601 0032 134B     		ldr	r3, .L34+4
+ 602 0034 9B6D     		ldr	r3, [r3, #88]
+ 603 0036 124A     		ldr	r2, .L34+4
+ 604 0038 23F48003 		bic	r3, r3, #4194304
+ 605 003c 9365     		str	r3, [r2, #88]
+ 268:d:/1/123123/Src\i2c.c **** 
+ 606              		.loc 1 268 5
+ 607 003e 4FF48841 		mov	r1, #17408
+ 608 0042 1048     		ldr	r0, .L34+8
+ 609 0044 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 610              		.loc 1 294 1
+ 611 0048 13E0     		b	.L33
+ 612              	.L32:
+ 274:d:/1/123123/Src\i2c.c ****   {
+ 613              		.loc 1 274 20
+ 614 004a 7B68     		ldr	r3, [r7, #4]
+ 615 004c 1B68     		ldr	r3, [r3]
+ 274:d:/1/123123/Src\i2c.c ****   {
+ 616              		.loc 1 274 10
+ 617 004e 0F4A     		ldr	r2, .L34+16
+ 618 0050 9342     		cmp	r3, r2
+ 619 0052 0ED1     		bne	.L33
+ 280:d:/1/123123/Src\i2c.c ****   
+ 620              		.loc 1 280 5
+ 621 0054 0A4B     		ldr	r3, .L34+4
+ 622 0056 9B6D     		ldr	r3, [r3, #88]
+ 623 0058 094A     		ldr	r2, .L34+4
+ 624 005a 23F40003 		bic	r3, r3, #8388608
+ 625 005e 9365     		str	r3, [r2, #88]
+ 286:d:/1/123123/Src\i2c.c **** 
+ 626              		.loc 1 286 5
+ 627 0060 8021     		movs	r1, #128
+ 628 0062 4FF09040 		mov	r0, #1207959552
+ 629 0066 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 288:d:/1/123123/Src\i2c.c **** 
+ 630              		.loc 1 288 5
+ 631 006a 1021     		movs	r1, #16
+ 632 006c 0548     		ldr	r0, .L34+8
+ 633 006e FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 634              	.L33:
+ 635              		.loc 1 294 1
+ 636 0072 00BF     		nop
+ 637 0074 0837     		adds	r7, r7, #8
+ 638              	.LCFI14:
+ 639              		.cfi_def_cfa_offset 8
+ 640 0076 BD46     		mov	sp, r7
+ 641              	.LCFI15:
+ 642              		.cfi_def_cfa_register 13
+ 643              		@ sp needed
+ 644 0078 80BD     		pop	{r7, pc}
+ 645              	.L35:
+ 646 007a 00BF     		.align	2
+ 647              	.L34:
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 18
+
+
+ 648 007c 00540040 		.word	1073763328
+ 649 0080 00100240 		.word	1073876992
+ 650 0084 00040048 		.word	1207960576
+ 651 0088 00580040 		.word	1073764352
+ 652 008c 005C0040 		.word	1073765376
+ 653              		.cfi_endproc
+ 654              	.LFE291:
+ 656              		.text
+ 657              	.Letext0:
+ 658              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 659              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 660              		.file 4 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 661              		.file 5 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\lib\\gcc\\arm-none-eabi
+ 662              		.file 6 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 663              		.file 7 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_typedef.h"
+ 664              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 665              		.file 9 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/common/cmsis/core_cm4.h"
+ 666              		.file 10 "d:/1/123123/Inc/system_stm32l4xx.h"
+ 667              		.file 11 "d:/1/123123/Inc/stm32l431xx.h"
+ 668              		.file 12 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_config.h"
+ 669              		.file 13 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_err.h"
+ 670              		.file 14 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-m/include/los_hwi.h"
+ 671              		.file 15 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ 672              		.file 16 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ 673              		.file 17 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ 674              		.file 18 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ 675              		.file 19 "d:/1/123123/Inc/i2c.h"
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccnabro7.s 			page 19
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 i2c.c
+                            *COM*:0000004c hi2c1
+                            *COM*:0000004c hi2c2
+                            *COM*:0000004c hi2c3
+C:\Users\SORA\AppData\Local\Temp\ccnabro7.s:21     .rodata:00000000 $d
+C:\Users\SORA\AppData\Local\Temp\ccnabro7.s:25     .text.MX_I2C1_Init:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccnabro7.s:33     .text.MX_I2C1_Init:00000000 MX_I2C1_Init
+C:\Users\SORA\AppData\Local\Temp\ccnabro7.s:128    .text.MX_I2C1_Init:00000080 $d
+C:\Users\SORA\AppData\Local\Temp\ccnabro7.s:136    .text.MX_I2C2_Init:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccnabro7.s:143    .text.MX_I2C2_Init:00000000 MX_I2C2_Init
+C:\Users\SORA\AppData\Local\Temp\ccnabro7.s:237    .text.MX_I2C2_Init:00000080 $d
+C:\Users\SORA\AppData\Local\Temp\ccnabro7.s:245    .text.MX_I2C3_Init:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccnabro7.s:252    .text.MX_I2C3_Init:00000000 MX_I2C3_Init
+C:\Users\SORA\AppData\Local\Temp\ccnabro7.s:346    .text.MX_I2C3_Init:00000080 $d
+C:\Users\SORA\AppData\Local\Temp\ccnabro7.s:354    .text.HAL_I2C_MspInit:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccnabro7.s:361    .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
+C:\Users\SORA\AppData\Local\Temp\ccnabro7.s:539    .text.HAL_I2C_MspInit:00000100 $d
+C:\Users\SORA\AppData\Local\Temp\ccnabro7.s:548    .text.HAL_I2C_MspDeInit:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccnabro7.s:555    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
+C:\Users\SORA\AppData\Local\Temp\ccnabro7.s:648    .text.HAL_I2C_MspDeInit:0000007c $d
+
+UNDEFINED SYMBOLS
+HAL_I2C_Init
+_Error_Handler
+HAL_I2CEx_ConfigAnalogFilter
+HAL_I2CEx_ConfigDigitalFilter
+HAL_GPIO_Init
+HAL_GPIO_DeInit

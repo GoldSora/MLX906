@@ -1,0 +1,646 @@
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"spi.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.comm	hspi2,100,4
+  18              		.section	.rodata
+  19              		.align	2
+  20              	.LC0:
+  21 0000 643A2F31 		.ascii	"d:/1/123123/Src/spi.c\000"
+  21      2F313233 
+  21      3132332F 
+  21      5372632F 
+  21      7370692E 
+  22              		.section	.text.MX_SPI2_Init,"ax",%progbits
+  23              		.align	1
+  24              		.global	MX_SPI2_Init
+  25              		.arch armv7e-m
+  26              		.syntax unified
+  27              		.thumb
+  28              		.thumb_func
+  29              		.fpu fpv4-sp-d16
+  31              	MX_SPI2_Init:
+  32              	.LFB287:
+  33              		.file 1 "d:/1/123123/Src/spi.c"
+   1:d:/1/123123/Src\spi.c **** /**
+   2:d:/1/123123/Src\spi.c ****   ******************************************************************************
+   3:d:/1/123123/Src\spi.c ****   * File Name          : SPI.c
+   4:d:/1/123123/Src\spi.c ****   * Description        : This file provides code for the configuration
+   5:d:/1/123123/Src\spi.c ****   *                      of the SPI instances.
+   6:d:/1/123123/Src\spi.c ****   ******************************************************************************
+   7:d:/1/123123/Src\spi.c ****   ** This notice applies to any and all portions of this file
+   8:d:/1/123123/Src\spi.c ****   * that are not between comment pairs USER CODE BEGIN and
+   9:d:/1/123123/Src\spi.c ****   * USER CODE END. Other portions of this file, whether 
+  10:d:/1/123123/Src\spi.c ****   * inserted by the user or by software development tools
+  11:d:/1/123123/Src\spi.c ****   * are owned by their respective copyright owners.
+  12:d:/1/123123/Src\spi.c ****   *
+  13:d:/1/123123/Src\spi.c ****   * COPYRIGHT(c) 2019 STMicroelectronics
+  14:d:/1/123123/Src\spi.c ****   *
+  15:d:/1/123123/Src\spi.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  16:d:/1/123123/Src\spi.c ****   * are permitted provided that the following conditions are met:
+  17:d:/1/123123/Src\spi.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  18:d:/1/123123/Src\spi.c ****   *      this list of conditions and the following disclaimer.
+  19:d:/1/123123/Src\spi.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  20:d:/1/123123/Src\spi.c ****   *      this list of conditions and the following disclaimer in the documentation
+  21:d:/1/123123/Src\spi.c ****   *      and/or other materials provided with the distribution.
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s 			page 2
+
+
+  22:d:/1/123123/Src\spi.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  23:d:/1/123123/Src\spi.c ****   *      may be used to endorse or promote products derived from this software
+  24:d:/1/123123/Src\spi.c ****   *      without specific prior written permission.
+  25:d:/1/123123/Src\spi.c ****   *
+  26:d:/1/123123/Src\spi.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:d:/1/123123/Src\spi.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  28:d:/1/123123/Src\spi.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  29:d:/1/123123/Src\spi.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  30:d:/1/123123/Src\spi.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  31:d:/1/123123/Src\spi.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  32:d:/1/123123/Src\spi.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  33:d:/1/123123/Src\spi.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  34:d:/1/123123/Src\spi.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  35:d:/1/123123/Src\spi.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  36:d:/1/123123/Src\spi.c ****   *
+  37:d:/1/123123/Src\spi.c ****   ******************************************************************************
+  38:d:/1/123123/Src\spi.c ****   */
+  39:d:/1/123123/Src\spi.c **** 
+  40:d:/1/123123/Src\spi.c **** /* Includes ------------------------------------------------------------------*/
+  41:d:/1/123123/Src\spi.c **** #include "spi.h"
+  42:d:/1/123123/Src\spi.c **** 
+  43:d:/1/123123/Src\spi.c **** #include "gpio.h"
+  44:d:/1/123123/Src\spi.c **** 
+  45:d:/1/123123/Src\spi.c **** /* USER CODE BEGIN 0 */
+  46:d:/1/123123/Src\spi.c **** 
+  47:d:/1/123123/Src\spi.c **** /* USER CODE END 0 */
+  48:d:/1/123123/Src\spi.c **** 
+  49:d:/1/123123/Src\spi.c **** SPI_HandleTypeDef hspi2;
+  50:d:/1/123123/Src\spi.c **** 
+  51:d:/1/123123/Src\spi.c **** /* SPI2 init function */
+  52:d:/1/123123/Src\spi.c **** void MX_SPI2_Init(void)
+  53:d:/1/123123/Src\spi.c **** {
+  34              		.loc 1 53 1
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 0
+  37              		@ frame_needed = 1, uses_anonymous_args = 0
+  38 0000 80B5     		push	{r7, lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 8
+  41              		.cfi_offset 7, -8
+  42              		.cfi_offset 14, -4
+  43 0002 00AF     		add	r7, sp, #0
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_register 7
+  54:d:/1/123123/Src\spi.c **** 
+  55:d:/1/123123/Src\spi.c ****   hspi2.Instance = SPI2;
+  46              		.loc 1 55 18
+  47 0004 1C4B     		ldr	r3, .L4
+  48 0006 1D4A     		ldr	r2, .L4+4
+  49 0008 1A60     		str	r2, [r3]
+  56:d:/1/123123/Src\spi.c ****   hspi2.Init.Mode = SPI_MODE_MASTER;
+  50              		.loc 1 56 19
+  51 000a 1B4B     		ldr	r3, .L4
+  52 000c 4FF48272 		mov	r2, #260
+  53 0010 5A60     		str	r2, [r3, #4]
+  57:d:/1/123123/Src\spi.c ****   hspi2.Init.Direction = SPI_DIRECTION_1LINE;
+  54              		.loc 1 57 24
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s 			page 3
+
+
+  55 0012 194B     		ldr	r3, .L4
+  56 0014 4FF40042 		mov	r2, #32768
+  57 0018 9A60     		str	r2, [r3, #8]
+  58:d:/1/123123/Src\spi.c ****   hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
+  58              		.loc 1 58 23
+  59 001a 174B     		ldr	r3, .L4
+  60 001c 4FF4E062 		mov	r2, #1792
+  61 0020 DA60     		str	r2, [r3, #12]
+  59:d:/1/123123/Src\spi.c ****   hspi2.Init.CLKPolarity = SPI_POLARITY_HIGH;
+  62              		.loc 1 59 26
+  63 0022 154B     		ldr	r3, .L4
+  64 0024 0222     		movs	r2, #2
+  65 0026 1A61     		str	r2, [r3, #16]
+  60:d:/1/123123/Src\spi.c ****   hspi2.Init.CLKPhase = SPI_PHASE_2EDGE;
+  66              		.loc 1 60 23
+  67 0028 134B     		ldr	r3, .L4
+  68 002a 0122     		movs	r2, #1
+  69 002c 5A61     		str	r2, [r3, #20]
+  61:d:/1/123123/Src\spi.c ****   hspi2.Init.NSS = SPI_NSS_SOFT;
+  70              		.loc 1 61 18
+  71 002e 124B     		ldr	r3, .L4
+  72 0030 4FF40072 		mov	r2, #512
+  73 0034 9A61     		str	r2, [r3, #24]
+  62:d:/1/123123/Src\spi.c ****   hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  74              		.loc 1 62 32
+  75 0036 104B     		ldr	r3, .L4
+  76 0038 0022     		movs	r2, #0
+  77 003a DA61     		str	r2, [r3, #28]
+  63:d:/1/123123/Src\spi.c ****   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  78              		.loc 1 63 23
+  79 003c 0E4B     		ldr	r3, .L4
+  80 003e 0022     		movs	r2, #0
+  81 0040 1A62     		str	r2, [r3, #32]
+  64:d:/1/123123/Src\spi.c ****   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
+  82              		.loc 1 64 21
+  83 0042 0D4B     		ldr	r3, .L4
+  84 0044 0022     		movs	r2, #0
+  85 0046 5A62     		str	r2, [r3, #36]
+  65:d:/1/123123/Src\spi.c ****   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  86              		.loc 1 65 29
+  87 0048 0B4B     		ldr	r3, .L4
+  88 004a 0022     		movs	r2, #0
+  89 004c 9A62     		str	r2, [r3, #40]
+  66:d:/1/123123/Src\spi.c ****   hspi2.Init.CRCPolynomial = 7;
+  90              		.loc 1 66 28
+  91 004e 0A4B     		ldr	r3, .L4
+  92 0050 0722     		movs	r2, #7
+  93 0052 DA62     		str	r2, [r3, #44]
+  67:d:/1/123123/Src\spi.c ****   hspi2.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
+  94              		.loc 1 67 24
+  95 0054 084B     		ldr	r3, .L4
+  96 0056 0022     		movs	r2, #0
+  97 0058 1A63     		str	r2, [r3, #48]
+  68:d:/1/123123/Src\spi.c ****   hspi2.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+  98              		.loc 1 68 23
+  99 005a 074B     		ldr	r3, .L4
+ 100 005c 0822     		movs	r2, #8
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s 			page 4
+
+
+ 101 005e 5A63     		str	r2, [r3, #52]
+  69:d:/1/123123/Src\spi.c ****   if (HAL_SPI_Init(&hspi2) != HAL_OK)
+ 102              		.loc 1 69 7
+ 103 0060 0548     		ldr	r0, .L4
+ 104 0062 FFF7FEFF 		bl	HAL_SPI_Init
+ 105 0066 0346     		mov	r3, r0
+ 106              		.loc 1 69 6
+ 107 0068 002B     		cmp	r3, #0
+ 108 006a 03D0     		beq	.L3
+  70:d:/1/123123/Src\spi.c ****   {
+  71:d:/1/123123/Src\spi.c ****     _Error_Handler(__FILE__, __LINE__);
+ 109              		.loc 1 71 5
+ 110 006c 4721     		movs	r1, #71
+ 111 006e 0448     		ldr	r0, .L4+8
+ 112 0070 FFF7FEFF 		bl	_Error_Handler
+ 113              	.L3:
+  72:d:/1/123123/Src\spi.c ****   }
+  73:d:/1/123123/Src\spi.c **** 
+  74:d:/1/123123/Src\spi.c **** }
+ 114              		.loc 1 74 1
+ 115 0074 00BF     		nop
+ 116 0076 80BD     		pop	{r7, pc}
+ 117              	.L5:
+ 118              		.align	2
+ 119              	.L4:
+ 120 0078 00000000 		.word	hspi2
+ 121 007c 00380040 		.word	1073756160
+ 122 0080 00000000 		.word	.LC0
+ 123              		.cfi_endproc
+ 124              	.LFE287:
+ 126              		.section	.text.HAL_SPI_MspInit,"ax",%progbits
+ 127              		.align	1
+ 128              		.global	HAL_SPI_MspInit
+ 129              		.syntax unified
+ 130              		.thumb
+ 131              		.thumb_func
+ 132              		.fpu fpv4-sp-d16
+ 134              	HAL_SPI_MspInit:
+ 135              	.LFB288:
+  75:d:/1/123123/Src\spi.c **** 
+  76:d:/1/123123/Src\spi.c **** void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
+  77:d:/1/123123/Src\spi.c **** {
+ 136              		.loc 1 77 1
+ 137              		.cfi_startproc
+ 138              		@ args = 0, pretend = 0, frame = 32
+ 139              		@ frame_needed = 1, uses_anonymous_args = 0
+ 140 0000 80B5     		push	{r7, lr}
+ 141              	.LCFI2:
+ 142              		.cfi_def_cfa_offset 8
+ 143              		.cfi_offset 7, -8
+ 144              		.cfi_offset 14, -4
+ 145 0002 88B0     		sub	sp, sp, #32
+ 146              	.LCFI3:
+ 147              		.cfi_def_cfa_offset 40
+ 148 0004 00AF     		add	r7, sp, #0
+ 149              	.LCFI4:
+ 150              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s 			page 5
+
+
+ 151 0006 7860     		str	r0, [r7, #4]
+  78:d:/1/123123/Src\spi.c **** 
+  79:d:/1/123123/Src\spi.c ****   GPIO_InitTypeDef GPIO_InitStruct;
+  80:d:/1/123123/Src\spi.c ****   if(spiHandle->Instance==SPI2)
+ 152              		.loc 1 80 15
+ 153 0008 7B68     		ldr	r3, [r7, #4]
+ 154 000a 1B68     		ldr	r3, [r3]
+ 155              		.loc 1 80 5
+ 156 000c 194A     		ldr	r2, .L9
+ 157 000e 9342     		cmp	r3, r2
+ 158 0010 2CD1     		bne	.L8
+ 159              	.LBB2:
+  81:d:/1/123123/Src\spi.c ****   {
+  82:d:/1/123123/Src\spi.c ****   /* USER CODE BEGIN SPI2_MspInit 0 */
+  83:d:/1/123123/Src\spi.c **** 
+  84:d:/1/123123/Src\spi.c ****   /* USER CODE END SPI2_MspInit 0 */
+  85:d:/1/123123/Src\spi.c ****     /* SPI2 clock enable */
+  86:d:/1/123123/Src\spi.c ****     __HAL_RCC_SPI2_CLK_ENABLE();
+ 160              		.loc 1 86 5
+ 161 0012 194B     		ldr	r3, .L9+4
+ 162 0014 9B6D     		ldr	r3, [r3, #88]
+ 163 0016 184A     		ldr	r2, .L9+4
+ 164 0018 43F48043 		orr	r3, r3, #16384
+ 165 001c 9365     		str	r3, [r2, #88]
+ 166 001e 164B     		ldr	r3, .L9+4
+ 167 0020 9B6D     		ldr	r3, [r3, #88]
+ 168 0022 03F48043 		and	r3, r3, #16384
+ 169 0026 BB60     		str	r3, [r7, #8]
+ 170 0028 BB68     		ldr	r3, [r7, #8]
+ 171              	.LBE2:
+  87:d:/1/123123/Src\spi.c ****   
+  88:d:/1/123123/Src\spi.c ****     /**SPI2 GPIO Configuration    
+  89:d:/1/123123/Src\spi.c ****     PC3     ------> SPI2_MOSI
+  90:d:/1/123123/Src\spi.c ****     PB13     ------> SPI2_SCK 
+  91:d:/1/123123/Src\spi.c ****     */
+  92:d:/1/123123/Src\spi.c ****     GPIO_InitStruct.Pin = GPIO_PIN_3;
+ 172              		.loc 1 92 25
+ 173 002a 0823     		movs	r3, #8
+ 174 002c FB60     		str	r3, [r7, #12]
+  93:d:/1/123123/Src\spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 175              		.loc 1 93 26
+ 176 002e 0223     		movs	r3, #2
+ 177 0030 3B61     		str	r3, [r7, #16]
+  94:d:/1/123123/Src\spi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 178              		.loc 1 94 26
+ 179 0032 0023     		movs	r3, #0
+ 180 0034 7B61     		str	r3, [r7, #20]
+  95:d:/1/123123/Src\spi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 181              		.loc 1 95 27
+ 182 0036 0323     		movs	r3, #3
+ 183 0038 BB61     		str	r3, [r7, #24]
+  96:d:/1/123123/Src\spi.c ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
+ 184              		.loc 1 96 31
+ 185 003a 0523     		movs	r3, #5
+ 186 003c FB61     		str	r3, [r7, #28]
+  97:d:/1/123123/Src\spi.c ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 187              		.loc 1 97 5
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s 			page 6
+
+
+ 188 003e 07F10C03 		add	r3, r7, #12
+ 189 0042 1946     		mov	r1, r3
+ 190 0044 0D48     		ldr	r0, .L9+8
+ 191 0046 FFF7FEFF 		bl	HAL_GPIO_Init
+  98:d:/1/123123/Src\spi.c **** 
+  99:d:/1/123123/Src\spi.c ****     GPIO_InitStruct.Pin = GPIO_PIN_13;
+ 192              		.loc 1 99 25
+ 193 004a 4FF40053 		mov	r3, #8192
+ 194 004e FB60     		str	r3, [r7, #12]
+ 100:d:/1/123123/Src\spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 195              		.loc 1 100 26
+ 196 0050 0223     		movs	r3, #2
+ 197 0052 3B61     		str	r3, [r7, #16]
+ 101:d:/1/123123/Src\spi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 198              		.loc 1 101 26
+ 199 0054 0023     		movs	r3, #0
+ 200 0056 7B61     		str	r3, [r7, #20]
+ 102:d:/1/123123/Src\spi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 201              		.loc 1 102 27
+ 202 0058 0323     		movs	r3, #3
+ 203 005a BB61     		str	r3, [r7, #24]
+ 103:d:/1/123123/Src\spi.c ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
+ 204              		.loc 1 103 31
+ 205 005c 0523     		movs	r3, #5
+ 206 005e FB61     		str	r3, [r7, #28]
+ 104:d:/1/123123/Src\spi.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 207              		.loc 1 104 5
+ 208 0060 07F10C03 		add	r3, r7, #12
+ 209 0064 1946     		mov	r1, r3
+ 210 0066 0648     		ldr	r0, .L9+12
+ 211 0068 FFF7FEFF 		bl	HAL_GPIO_Init
+ 212              	.L8:
+ 105:d:/1/123123/Src\spi.c **** 
+ 106:d:/1/123123/Src\spi.c ****   /* USER CODE BEGIN SPI2_MspInit 1 */
+ 107:d:/1/123123/Src\spi.c **** 
+ 108:d:/1/123123/Src\spi.c ****   /* USER CODE END SPI2_MspInit 1 */
+ 109:d:/1/123123/Src\spi.c ****   }
+ 110:d:/1/123123/Src\spi.c **** }
+ 213              		.loc 1 110 1
+ 214 006c 00BF     		nop
+ 215 006e 2037     		adds	r7, r7, #32
+ 216              	.LCFI5:
+ 217              		.cfi_def_cfa_offset 8
+ 218 0070 BD46     		mov	sp, r7
+ 219              	.LCFI6:
+ 220              		.cfi_def_cfa_register 13
+ 221              		@ sp needed
+ 222 0072 80BD     		pop	{r7, pc}
+ 223              	.L10:
+ 224              		.align	2
+ 225              	.L9:
+ 226 0074 00380040 		.word	1073756160
+ 227 0078 00100240 		.word	1073876992
+ 228 007c 00080048 		.word	1207961600
+ 229 0080 00040048 		.word	1207960576
+ 230              		.cfi_endproc
+ 231              	.LFE288:
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s 			page 7
+
+
+ 233              		.section	.text.HAL_SPI_MspDeInit,"ax",%progbits
+ 234              		.align	1
+ 235              		.global	HAL_SPI_MspDeInit
+ 236              		.syntax unified
+ 237              		.thumb
+ 238              		.thumb_func
+ 239              		.fpu fpv4-sp-d16
+ 241              	HAL_SPI_MspDeInit:
+ 242              	.LFB289:
+ 111:d:/1/123123/Src\spi.c **** 
+ 112:d:/1/123123/Src\spi.c **** void HAL_SPI_MspDeInit(SPI_HandleTypeDef* spiHandle)
+ 113:d:/1/123123/Src\spi.c **** {
+ 243              		.loc 1 113 1
+ 244              		.cfi_startproc
+ 245              		@ args = 0, pretend = 0, frame = 8
+ 246              		@ frame_needed = 1, uses_anonymous_args = 0
+ 247 0000 80B5     		push	{r7, lr}
+ 248              	.LCFI7:
+ 249              		.cfi_def_cfa_offset 8
+ 250              		.cfi_offset 7, -8
+ 251              		.cfi_offset 14, -4
+ 252 0002 82B0     		sub	sp, sp, #8
+ 253              	.LCFI8:
+ 254              		.cfi_def_cfa_offset 16
+ 255 0004 00AF     		add	r7, sp, #0
+ 256              	.LCFI9:
+ 257              		.cfi_def_cfa_register 7
+ 258 0006 7860     		str	r0, [r7, #4]
+ 114:d:/1/123123/Src\spi.c **** 
+ 115:d:/1/123123/Src\spi.c ****   if(spiHandle->Instance==SPI2)
+ 259              		.loc 1 115 15
+ 260 0008 7B68     		ldr	r3, [r7, #4]
+ 261 000a 1B68     		ldr	r3, [r3]
+ 262              		.loc 1 115 5
+ 263 000c 0A4A     		ldr	r2, .L14
+ 264 000e 9342     		cmp	r3, r2
+ 265 0010 0ED1     		bne	.L13
+ 116:d:/1/123123/Src\spi.c ****   {
+ 117:d:/1/123123/Src\spi.c ****   /* USER CODE BEGIN SPI2_MspDeInit 0 */
+ 118:d:/1/123123/Src\spi.c **** 
+ 119:d:/1/123123/Src\spi.c ****   /* USER CODE END SPI2_MspDeInit 0 */
+ 120:d:/1/123123/Src\spi.c ****     /* Peripheral clock disable */
+ 121:d:/1/123123/Src\spi.c ****     __HAL_RCC_SPI2_CLK_DISABLE();
+ 266              		.loc 1 121 5
+ 267 0012 0A4B     		ldr	r3, .L14+4
+ 268 0014 9B6D     		ldr	r3, [r3, #88]
+ 269 0016 094A     		ldr	r2, .L14+4
+ 270 0018 23F48043 		bic	r3, r3, #16384
+ 271 001c 9365     		str	r3, [r2, #88]
+ 122:d:/1/123123/Src\spi.c ****   
+ 123:d:/1/123123/Src\spi.c ****     /**SPI2 GPIO Configuration    
+ 124:d:/1/123123/Src\spi.c ****     PC3     ------> SPI2_MOSI
+ 125:d:/1/123123/Src\spi.c ****     PB13     ------> SPI2_SCK 
+ 126:d:/1/123123/Src\spi.c ****     */
+ 127:d:/1/123123/Src\spi.c ****     HAL_GPIO_DeInit(GPIOC, GPIO_PIN_3);
+ 272              		.loc 1 127 5
+ 273 001e 0821     		movs	r1, #8
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s 			page 8
+
+
+ 274 0020 0748     		ldr	r0, .L14+8
+ 275 0022 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 128:d:/1/123123/Src\spi.c **** 
+ 129:d:/1/123123/Src\spi.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_13);
+ 276              		.loc 1 129 5
+ 277 0026 4FF40051 		mov	r1, #8192
+ 278 002a 0648     		ldr	r0, .L14+12
+ 279 002c FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 280              	.L13:
+ 130:d:/1/123123/Src\spi.c **** 
+ 131:d:/1/123123/Src\spi.c ****   /* USER CODE BEGIN SPI2_MspDeInit 1 */
+ 132:d:/1/123123/Src\spi.c **** 
+ 133:d:/1/123123/Src\spi.c ****   /* USER CODE END SPI2_MspDeInit 1 */
+ 134:d:/1/123123/Src\spi.c ****   }
+ 135:d:/1/123123/Src\spi.c **** } 
+ 281              		.loc 1 135 1
+ 282 0030 00BF     		nop
+ 283 0032 0837     		adds	r7, r7, #8
+ 284              	.LCFI10:
+ 285              		.cfi_def_cfa_offset 8
+ 286 0034 BD46     		mov	sp, r7
+ 287              	.LCFI11:
+ 288              		.cfi_def_cfa_register 13
+ 289              		@ sp needed
+ 290 0036 80BD     		pop	{r7, pc}
+ 291              	.L15:
+ 292              		.align	2
+ 293              	.L14:
+ 294 0038 00380040 		.word	1073756160
+ 295 003c 00100240 		.word	1073876992
+ 296 0040 00080048 		.word	1207961600
+ 297 0044 00040048 		.word	1207960576
+ 298              		.cfi_endproc
+ 299              	.LFE289:
+ 301              		.section	.text.SPI2_ReadWriteByte,"ax",%progbits
+ 302              		.align	1
+ 303              		.global	SPI2_ReadWriteByte
+ 304              		.syntax unified
+ 305              		.thumb
+ 306              		.thumb_func
+ 307              		.fpu fpv4-sp-d16
+ 309              	SPI2_ReadWriteByte:
+ 310              	.LFB290:
+ 136:d:/1/123123/Src\spi.c **** 
+ 137:d:/1/123123/Src\spi.c **** /* USER CODE BEGIN 1 */
+ 138:d:/1/123123/Src\spi.c **** /**
+ 139:d:/1/123123/Src\spi.c ****  * @brief	SPI2 读写一个字节
+ 140:d:/1/123123/Src\spi.c ****  *
+ 141:d:/1/123123/Src\spi.c ****  * @param   TxData	要写入的字节
+ 142:d:/1/123123/Src\spi.c ****  *
+ 143:d:/1/123123/Src\spi.c ****  * @return  uint8_t		读取到的字节
+ 144:d:/1/123123/Src\spi.c ****  */
+ 145:d:/1/123123/Src\spi.c **** uint8_t SPI2_ReadWriteByte(uint8_t TxData)
+ 146:d:/1/123123/Src\spi.c **** {
+ 311              		.loc 1 146 1
+ 312              		.cfi_startproc
+ 313              		@ args = 0, pretend = 0, frame = 16
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s 			page 9
+
+
+ 314              		@ frame_needed = 1, uses_anonymous_args = 0
+ 315 0000 80B5     		push	{r7, lr}
+ 316              	.LCFI12:
+ 317              		.cfi_def_cfa_offset 8
+ 318              		.cfi_offset 7, -8
+ 319              		.cfi_offset 14, -4
+ 320 0002 86B0     		sub	sp, sp, #24
+ 321              	.LCFI13:
+ 322              		.cfi_def_cfa_offset 32
+ 323 0004 02AF     		add	r7, sp, #8
+ 324              	.LCFI14:
+ 325              		.cfi_def_cfa 7, 24
+ 326 0006 0346     		mov	r3, r0
+ 327 0008 FB71     		strb	r3, [r7, #7]
+ 147:d:/1/123123/Src\spi.c ****     uint8_t Rxdata;
+ 148:d:/1/123123/Src\spi.c ****     HAL_SPI_TransmitReceive(&hspi2,&TxData,&Rxdata,1, 1000);       
+ 328              		.loc 1 148 5
+ 329 000a 07F10F02 		add	r2, r7, #15
+ 330 000e F91D     		adds	r1, r7, #7
+ 331 0010 4FF47A73 		mov	r3, #1000
+ 332 0014 0093     		str	r3, [sp]
+ 333 0016 0123     		movs	r3, #1
+ 334 0018 0348     		ldr	r0, .L18
+ 335 001a FFF7FEFF 		bl	HAL_SPI_TransmitReceive
+ 149:d:/1/123123/Src\spi.c ****  	return Rxdata;          		    //返回收到的数据		
+ 336              		.loc 1 149 10
+ 337 001e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 150:d:/1/123123/Src\spi.c **** }
+ 338              		.loc 1 150 1
+ 339 0020 1846     		mov	r0, r3
+ 340 0022 1037     		adds	r7, r7, #16
+ 341              	.LCFI15:
+ 342              		.cfi_def_cfa_offset 8
+ 343 0024 BD46     		mov	sp, r7
+ 344              	.LCFI16:
+ 345              		.cfi_def_cfa_register 13
+ 346              		@ sp needed
+ 347 0026 80BD     		pop	{r7, pc}
+ 348              	.L19:
+ 349              		.align	2
+ 350              	.L18:
+ 351 0028 00000000 		.word	hspi2
+ 352              		.cfi_endproc
+ 353              	.LFE290:
+ 355              		.section	.text.SPI2_WriteByte,"ax",%progbits
+ 356              		.align	1
+ 357              		.global	SPI2_WriteByte
+ 358              		.syntax unified
+ 359              		.thumb
+ 360              		.thumb_func
+ 361              		.fpu fpv4-sp-d16
+ 363              	SPI2_WriteByte:
+ 364              	.LFB291:
+ 151:d:/1/123123/Src\spi.c **** 
+ 152:d:/1/123123/Src\spi.c **** /**
+ 153:d:/1/123123/Src\spi.c ****  * @brief	SPI2 写入一个字节
+ 154:d:/1/123123/Src\spi.c ****  *
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s 			page 10
+
+
+ 155:d:/1/123123/Src\spi.c ****  * @param   TxData	要写入的字节
+ 156:d:/1/123123/Src\spi.c ****  * @param   size	写入字节大小
+ 157:d:/1/123123/Src\spi.c ****  *
+ 158:d:/1/123123/Src\spi.c ****  * @return  uint8_t		0:写入成功,其他:写入失败
+ 159:d:/1/123123/Src\spi.c ****  */
+ 160:d:/1/123123/Src\spi.c **** uint8_t SPI2_WriteByte(uint8_t *TxData,uint16_t size)
+ 161:d:/1/123123/Src\spi.c **** {
+ 365              		.loc 1 161 1
+ 366              		.cfi_startproc
+ 367              		@ args = 0, pretend = 0, frame = 8
+ 368              		@ frame_needed = 1, uses_anonymous_args = 0
+ 369 0000 80B5     		push	{r7, lr}
+ 370              	.LCFI17:
+ 371              		.cfi_def_cfa_offset 8
+ 372              		.cfi_offset 7, -8
+ 373              		.cfi_offset 14, -4
+ 374 0002 82B0     		sub	sp, sp, #8
+ 375              	.LCFI18:
+ 376              		.cfi_def_cfa_offset 16
+ 377 0004 00AF     		add	r7, sp, #0
+ 378              	.LCFI19:
+ 379              		.cfi_def_cfa_register 7
+ 380 0006 7860     		str	r0, [r7, #4]
+ 381 0008 0B46     		mov	r3, r1
+ 382 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+ 162:d:/1/123123/Src\spi.c **** 	return HAL_SPI_Transmit(&hspi2,TxData,size,1000);
+ 383              		.loc 1 162 9
+ 384 000c 7A88     		ldrh	r2, [r7, #2]
+ 385 000e 4FF47A73 		mov	r3, #1000
+ 386 0012 7968     		ldr	r1, [r7, #4]
+ 387 0014 0348     		ldr	r0, .L22
+ 388 0016 FFF7FEFF 		bl	HAL_SPI_Transmit
+ 389 001a 0346     		mov	r3, r0
+ 163:d:/1/123123/Src\spi.c **** }
+ 390              		.loc 1 163 1
+ 391 001c 1846     		mov	r0, r3
+ 392 001e 0837     		adds	r7, r7, #8
+ 393              	.LCFI20:
+ 394              		.cfi_def_cfa_offset 8
+ 395 0020 BD46     		mov	sp, r7
+ 396              	.LCFI21:
+ 397              		.cfi_def_cfa_register 13
+ 398              		@ sp needed
+ 399 0022 80BD     		pop	{r7, pc}
+ 400              	.L23:
+ 401              		.align	2
+ 402              	.L22:
+ 403 0024 00000000 		.word	hspi2
+ 404              		.cfi_endproc
+ 405              	.LFE291:
+ 407              		.text
+ 408              	.Letext0:
+ 409              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 410              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 411              		.file 4 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 412              		.file 5 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\lib\\gcc\\arm-none-eabi
+ 413              		.file 6 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s 			page 11
+
+
+ 414              		.file 7 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_typedef.h"
+ 415              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 416              		.file 9 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/common/cmsis/core_cm4.h"
+ 417              		.file 10 "d:/1/123123/Inc/system_stm32l4xx.h"
+ 418              		.file 11 "d:/1/123123/Inc/stm32l431xx.h"
+ 419              		.file 12 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_config.h"
+ 420              		.file 13 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_err.h"
+ 421              		.file 14 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-m/include/los_hwi.h"
+ 422              		.file 15 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ 423              		.file 16 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ 424              		.file 17 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ 425              		.file 18 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ 426              		.file 19 "d:/1/123123/Inc/spi.h"
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 spi.c
+                            *COM*:00000064 hspi2
+C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s:19     .rodata:00000000 $d
+C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s:23     .text.MX_SPI2_Init:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s:31     .text.MX_SPI2_Init:00000000 MX_SPI2_Init
+C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s:120    .text.MX_SPI2_Init:00000078 $d
+C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s:127    .text.HAL_SPI_MspInit:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s:134    .text.HAL_SPI_MspInit:00000000 HAL_SPI_MspInit
+C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s:226    .text.HAL_SPI_MspInit:00000074 $d
+C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s:234    .text.HAL_SPI_MspDeInit:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s:241    .text.HAL_SPI_MspDeInit:00000000 HAL_SPI_MspDeInit
+C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s:294    .text.HAL_SPI_MspDeInit:00000038 $d
+C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s:302    .text.SPI2_ReadWriteByte:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s:309    .text.SPI2_ReadWriteByte:00000000 SPI2_ReadWriteByte
+C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s:351    .text.SPI2_ReadWriteByte:00000028 $d
+C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s:356    .text.SPI2_WriteByte:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s:363    .text.SPI2_WriteByte:00000000 SPI2_WriteByte
+C:\Users\SORA\AppData\Local\Temp\ccneDk6a.s:403    .text.SPI2_WriteByte:00000024 $d
+
+UNDEFINED SYMBOLS
+HAL_SPI_Init
+_Error_Handler
+HAL_GPIO_Init
+HAL_GPIO_DeInit
+HAL_SPI_TransmitReceive
+HAL_SPI_Transmit

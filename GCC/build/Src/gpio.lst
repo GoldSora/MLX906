@@ -1,0 +1,254 @@
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccXMa9BI.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gpio.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.MX_GPIO_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	MX_GPIO_Init
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	MX_GPIO_Init:
+  27              	.LFB287:
+  28              		.file 1 "d:/1/123123/Src/gpio.c"
+   1:d:/1/123123/Src\gpio.c **** /**
+   2:d:/1/123123/Src\gpio.c ****   ******************************************************************************
+   3:d:/1/123123/Src\gpio.c ****   * File Name          : gpio.c
+   4:d:/1/123123/Src\gpio.c ****   * Description        : This file provides code for the configuration
+   5:d:/1/123123/Src\gpio.c ****   *                      of all used GPIO pins.
+   6:d:/1/123123/Src\gpio.c ****   ******************************************************************************
+   7:d:/1/123123/Src\gpio.c ****   ** This notice applies to any and all portions of this file
+   8:d:/1/123123/Src\gpio.c ****   * that are not between comment pairs USER CODE BEGIN and
+   9:d:/1/123123/Src\gpio.c ****   * USER CODE END. Other portions of this file, whether 
+  10:d:/1/123123/Src\gpio.c ****   * inserted by the user or by software development tools
+  11:d:/1/123123/Src\gpio.c ****   * are owned by their respective copyright owners.
+  12:d:/1/123123/Src\gpio.c ****   *
+  13:d:/1/123123/Src\gpio.c ****   * COPYRIGHT(c) 2018 STMicroelectronics
+  14:d:/1/123123/Src\gpio.c ****   *
+  15:d:/1/123123/Src\gpio.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  16:d:/1/123123/Src\gpio.c ****   * are permitted provided that the following conditions are met:
+  17:d:/1/123123/Src\gpio.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  18:d:/1/123123/Src\gpio.c ****   *      this list of conditions and the following disclaimer.
+  19:d:/1/123123/Src\gpio.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  20:d:/1/123123/Src\gpio.c ****   *      this list of conditions and the following disclaimer in the documentation
+  21:d:/1/123123/Src\gpio.c ****   *      and/or other materials provided with the distribution.
+  22:d:/1/123123/Src\gpio.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  23:d:/1/123123/Src\gpio.c ****   *      may be used to endorse or promote products derived from this software
+  24:d:/1/123123/Src\gpio.c ****   *      without specific prior written permission.
+  25:d:/1/123123/Src\gpio.c ****   *
+  26:d:/1/123123/Src\gpio.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:d:/1/123123/Src\gpio.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  28:d:/1/123123/Src\gpio.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  29:d:/1/123123/Src\gpio.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  30:d:/1/123123/Src\gpio.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccXMa9BI.s 			page 2
+
+
+  31:d:/1/123123/Src\gpio.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  32:d:/1/123123/Src\gpio.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  33:d:/1/123123/Src\gpio.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  34:d:/1/123123/Src\gpio.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  35:d:/1/123123/Src\gpio.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  36:d:/1/123123/Src\gpio.c ****   *
+  37:d:/1/123123/Src\gpio.c ****   ******************************************************************************
+  38:d:/1/123123/Src\gpio.c ****   */
+  39:d:/1/123123/Src\gpio.c **** 
+  40:d:/1/123123/Src\gpio.c **** /* Includes ------------------------------------------------------------------*/
+  41:d:/1/123123/Src\gpio.c **** #include "gpio.h"
+  42:d:/1/123123/Src\gpio.c **** /* USER CODE BEGIN 0 */
+  43:d:/1/123123/Src\gpio.c **** 
+  44:d:/1/123123/Src\gpio.c **** /* USER CODE END 0 */
+  45:d:/1/123123/Src\gpio.c **** 
+  46:d:/1/123123/Src\gpio.c **** /*----------------------------------------------------------------------------*/
+  47:d:/1/123123/Src\gpio.c **** /* Configure GPIO                                                             */
+  48:d:/1/123123/Src\gpio.c **** /*----------------------------------------------------------------------------*/
+  49:d:/1/123123/Src\gpio.c **** /* USER CODE BEGIN 1 */
+  50:d:/1/123123/Src\gpio.c **** 
+  51:d:/1/123123/Src\gpio.c **** /* USER CODE END 1 */
+  52:d:/1/123123/Src\gpio.c **** 
+  53:d:/1/123123/Src\gpio.c **** /** Configure pins as 
+  54:d:/1/123123/Src\gpio.c ****         * Analog 
+  55:d:/1/123123/Src\gpio.c ****         * Input 
+  56:d:/1/123123/Src\gpio.c ****         * Output
+  57:d:/1/123123/Src\gpio.c ****         * EVENT_OUT
+  58:d:/1/123123/Src\gpio.c ****         * EXTI
+  59:d:/1/123123/Src\gpio.c **** */
+  60:d:/1/123123/Src\gpio.c **** void MX_GPIO_Init(void)
+  61:d:/1/123123/Src\gpio.c **** {
+  29              		.loc 1 61 1
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 40
+  32              		@ frame_needed = 1, uses_anonymous_args = 0
+  33 0000 80B5     		push	{r7, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 7, -8
+  37              		.cfi_offset 14, -4
+  38 0002 8AB0     		sub	sp, sp, #40
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 48
+  41 0004 00AF     		add	r7, sp, #0
+  42              	.LCFI2:
+  43              		.cfi_def_cfa_register 7
+  44              	.LBB2:
+  62:d:/1/123123/Src\gpio.c **** 
+  63:d:/1/123123/Src\gpio.c ****   GPIO_InitTypeDef GPIO_InitStruct;
+  64:d:/1/123123/Src\gpio.c **** 
+  65:d:/1/123123/Src\gpio.c ****   /* GPIO Ports Clock Enable */
+  66:d:/1/123123/Src\gpio.c ****   __HAL_RCC_GPIOC_CLK_ENABLE();
+  45              		.loc 1 66 3
+  46 0006 204B     		ldr	r3, .L2
+  47 0008 DB6C     		ldr	r3, [r3, #76]
+  48 000a 1F4A     		ldr	r2, .L2
+  49 000c 43F00403 		orr	r3, r3, #4
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccXMa9BI.s 			page 3
+
+
+  50 0010 D364     		str	r3, [r2, #76]
+  51 0012 1D4B     		ldr	r3, .L2
+  52 0014 DB6C     		ldr	r3, [r3, #76]
+  53 0016 03F00403 		and	r3, r3, #4
+  54 001a 3B61     		str	r3, [r7, #16]
+  55 001c 3B69     		ldr	r3, [r7, #16]
+  56              	.LBE2:
+  57              	.LBB3:
+  67:d:/1/123123/Src\gpio.c ****   __HAL_RCC_GPIOH_CLK_ENABLE();
+  58              		.loc 1 67 3
+  59 001e 1A4B     		ldr	r3, .L2
+  60 0020 DB6C     		ldr	r3, [r3, #76]
+  61 0022 194A     		ldr	r2, .L2
+  62 0024 43F08003 		orr	r3, r3, #128
+  63 0028 D364     		str	r3, [r2, #76]
+  64 002a 174B     		ldr	r3, .L2
+  65 002c DB6C     		ldr	r3, [r3, #76]
+  66 002e 03F08003 		and	r3, r3, #128
+  67 0032 FB60     		str	r3, [r7, #12]
+  68 0034 FB68     		ldr	r3, [r7, #12]
+  69              	.LBE3:
+  70              	.LBB4:
+  68:d:/1/123123/Src\gpio.c ****   __HAL_RCC_GPIOA_CLK_ENABLE();
+  71              		.loc 1 68 3
+  72 0036 144B     		ldr	r3, .L2
+  73 0038 DB6C     		ldr	r3, [r3, #76]
+  74 003a 134A     		ldr	r2, .L2
+  75 003c 43F00103 		orr	r3, r3, #1
+  76 0040 D364     		str	r3, [r2, #76]
+  77 0042 114B     		ldr	r3, .L2
+  78 0044 DB6C     		ldr	r3, [r3, #76]
+  79 0046 03F00103 		and	r3, r3, #1
+  80 004a BB60     		str	r3, [r7, #8]
+  81 004c BB68     		ldr	r3, [r7, #8]
+  82              	.LBE4:
+  83              	.LBB5:
+  69:d:/1/123123/Src\gpio.c ****   __HAL_RCC_GPIOB_CLK_ENABLE();
+  84              		.loc 1 69 3
+  85 004e 0E4B     		ldr	r3, .L2
+  86 0050 DB6C     		ldr	r3, [r3, #76]
+  87 0052 0D4A     		ldr	r2, .L2
+  88 0054 43F00203 		orr	r3, r3, #2
+  89 0058 D364     		str	r3, [r2, #76]
+  90 005a 0B4B     		ldr	r3, .L2
+  91 005c DB6C     		ldr	r3, [r3, #76]
+  92 005e 03F00203 		and	r3, r3, #2
+  93 0062 7B60     		str	r3, [r7, #4]
+  94 0064 7B68     		ldr	r3, [r7, #4]
+  95              	.LBE5:
+  70:d:/1/123123/Src\gpio.c **** 
+  71:d:/1/123123/Src\gpio.c **** //	/*Configure GPIO pin Output Level */
+  72:d:/1/123123/Src\gpio.c **** //  HAL_GPIO_WritePin(Light_GPIO_Port, Light_Pin, GPIO_PIN_RESET);
+  73:d:/1/123123/Src\gpio.c **** //
+  74:d:/1/123123/Src\gpio.c **** //	/*Configure GPIO pin : PtPin */
+  75:d:/1/123123/Src\gpio.c **** //  GPIO_InitStruct.Pin = Light_Pin;
+  76:d:/1/123123/Src\gpio.c **** //  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  77:d:/1/123123/Src\gpio.c **** //  GPIO_InitStruct.Pull = GPIO_NOPULL;
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccXMa9BI.s 			page 4
+
+
+  78:d:/1/123123/Src\gpio.c **** //  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  79:d:/1/123123/Src\gpio.c **** //  HAL_GPIO_Init(Light_GPIO_Port, &GPIO_InitStruct);
+  80:d:/1/123123/Src\gpio.c **** 	
+  81:d:/1/123123/Src\gpio.c **** 	GPIO_InitStruct.Pin = KEY1_Pin|KEY2_Pin;
+  96              		.loc 1 81 22
+  97 0066 0C23     		movs	r3, #12
+  98 0068 7B61     		str	r3, [r7, #20]
+  82:d:/1/123123/Src\gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  99              		.loc 1 82 24
+ 100 006a 084B     		ldr	r3, .L2+4
+ 101 006c BB61     		str	r3, [r7, #24]
+  83:d:/1/123123/Src\gpio.c ****   GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 102              		.loc 1 83 24
+ 103 006e 0123     		movs	r3, #1
+ 104 0070 FB61     		str	r3, [r7, #28]
+  84:d:/1/123123/Src\gpio.c ****   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 105              		.loc 1 84 3
+ 106 0072 07F11403 		add	r3, r7, #20
+ 107 0076 1946     		mov	r1, r3
+ 108 0078 0548     		ldr	r0, .L2+8
+ 109 007a FFF7FEFF 		bl	HAL_GPIO_Init
+  85:d:/1/123123/Src\gpio.c **** 	
+  86:d:/1/123123/Src\gpio.c **** }
+ 110              		.loc 1 86 1
+ 111 007e 00BF     		nop
+ 112 0080 2837     		adds	r7, r7, #40
+ 113              	.LCFI3:
+ 114              		.cfi_def_cfa_offset 8
+ 115 0082 BD46     		mov	sp, r7
+ 116              	.LCFI4:
+ 117              		.cfi_def_cfa_register 13
+ 118              		@ sp needed
+ 119 0084 80BD     		pop	{r7, pc}
+ 120              	.L3:
+ 121 0086 00BF     		.align	2
+ 122              	.L2:
+ 123 0088 00100240 		.word	1073876992
+ 124 008c 00002110 		.word	270598144
+ 125 0090 00040048 		.word	1207960576
+ 126              		.cfi_endproc
+ 127              	.LFE287:
+ 129              		.text
+ 130              	.Letext0:
+ 131              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 132              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 133              		.file 4 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 134              		.file 5 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\lib\\gcc\\arm-none-eabi
+ 135              		.file 6 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 136              		.file 7 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_typedef.h"
+ 137              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 138              		.file 9 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/common/cmsis/core_cm4.h"
+ 139              		.file 10 "d:/1/123123/Inc/system_stm32l4xx.h"
+ 140              		.file 11 "d:/1/123123/Inc/stm32l431xx.h"
+ 141              		.file 12 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_config.h"
+ 142              		.file 13 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_err.h"
+ 143              		.file 14 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-m/include/los_hwi.h"
+ 144              		.file 15 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccXMa9BI.s 			page 5
+
+
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccXMa9BI.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gpio.c
+C:\Users\SORA\AppData\Local\Temp\ccXMa9BI.s:18     .text.MX_GPIO_Init:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccXMa9BI.s:26     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+C:\Users\SORA\AppData\Local\Temp\ccXMa9BI.s:123    .text.MX_GPIO_Init:00000088 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_Init

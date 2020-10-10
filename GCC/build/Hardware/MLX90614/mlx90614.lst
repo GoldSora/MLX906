@@ -1,0 +1,1106 @@
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"mlx90614.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	temp_buff
+  18              		.section	.rodata
+  19              		.align	2
+  20              	.LC0:
+  21 0000 00       		.ascii	"\000"
+  22              		.section	.data.temp_buff,"aw"
+  23              		.align	2
+  26              	temp_buff:
+  27 0000 00000000 		.word	.LC0
+  28              		.global	i
+  29              		.section	.bss.i,"aw",%nobits
+  30              		.align	2
+  33              	i:
+  34 0000 00000000 		.space	4
+  35              		.section	.rodata.crc_table,"a"
+  36              		.align	2
+  39              	crc_table:
+  40 0000 00070E09 		.ascii	"\000\007\016\011\034\033\022\0258?61$#*-pw~ylkbeHOF"
+  40      1C1B1215 
+  40      383F3631 
+  40      24232A2D 
+  40      70777E79 
+  41 001b 4154535A 		.ascii	"ATSZ]\340\347\356\351\374\373\362\365\330\337\326\321"
+  41      5DE0E7EE 
+  41      E9FCFBF2 
+  41      F5D8DFD6 
+  41      D1
+  42 002c C4C3CACD 		.ascii	"\304\303\312\315\220\227\236\231\214\213\202\205\250"
+  42      90979E99 
+  42      8C8B8285 
+  42      A8
+  43 0039 AFA6A1B4 		.ascii	"\257\246\241\264\263\272\275\307\300\311\316\333\334"
+  43      B3BABDC7 
+  43      C0C9CEDB 
+  43      DC
+  44 0046 D5D2FFF8 		.ascii	"\325\322\377\370\361\366\343\344\355\352\267\260\271"
+  44      F1F6E3E4 
+  44      EDEAB7B0 
+  44      B9
+  45 0053 BEABACA5 		.ascii	"\276\253\254\245\242\217\210\201\206\223\224\235\232"
+  45      A28F8881 
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 2
+
+
+  45      8693949D 
+  45      9A
+  46 0060 2720292E 		.ascii	"' ).;<52\037\030\021\026\003\004\015\012WPY^KLEBoha"
+  46      3B3C3532 
+  46      1F181116 
+  46      03040D0A 
+  46      5750595E 
+  47 007b 6673747D 		.ascii	"fst}z\211\216\207\200\225\222\233\234\261\266\277\270"
+  47      7A898E87 
+  47      8095929B 
+  47      9CB1B6BF 
+  47      B8
+  48 008c ADAAA3A4 		.ascii	"\255\252\243\244\371\376\367\360\345\342\353\354\301"
+  48      F9FEF7F0 
+  48      E5E2EBEC 
+  48      C1
+  49 0099 C6CFC8DD 		.ascii	"\306\317\310\335\332\323\324ing`ur{|QV_XMJCD\031\036"
+  49      DAD3D469 
+  49      6E676075 
+  49      727B7C51 
+  49      565F584D 
+  50 00b2 17100502 		.ascii	"\027\020\005\002\013\014!&/(=:34NI@GRU\\[vqx\177jmd"
+  50      0B0C2126 
+  50      2F283D3A 
+  50      33344E49 
+  50      40475255 
+  51 00cf 633E3930 		.ascii	"c>907\"%,+\006\001\010\017\032\035\024\023\256\251\240"
+  51      3722252C 
+  51      2B060108 
+  51      0F1A1D14 
+  51      13AEA9A0 
+  52 00e3 A7B2B5BC 		.ascii	"\247\262\265\274\273\226\221\230\237\212\215\204\203"
+  52      BB969198 
+  52      9F8A8D84 
+  52      83
+  53 00f0 DED9D0D7 		.ascii	"\336\331\320\327\302\305\314\313\346\341\350\357\372"
+  53      C2C5CCCB 
+  53      E6E1E8EF 
+  53      FA
+  54 00fd FDF4F3   		.ascii	"\375\364\363"
+  55              		.section	.text.CRC8_Calc,"ax",%progbits
+  56              		.align	1
+  57              		.global	CRC8_Calc
+  58              		.arch armv7e-m
+  59              		.syntax unified
+  60              		.thumb
+  61              		.thumb_func
+  62              		.fpu fpv4-sp-d16
+  64              	CRC8_Calc:
+  65              	.LFB287:
+  66              		.file 1 "d:/1/123123/Hardware/MLX90614/mlx90614.c"
+   1:d:/1/123123/Hardware/MLX90614\mlx90614.c **** /*
+   2:d:/1/123123/Hardware/MLX90614\mlx90614.c ****  * mlx90614.c
+   3:d:/1/123123/Hardware/MLX90614\mlx90614.c ****  *
+   4:d:/1/123123/Hardware/MLX90614\mlx90614.c ****  *  Created on: 29 mag 2019
+   5:d:/1/123123/Hardware/MLX90614\mlx90614.c ****  *      Author: Michele Gazzarri
+   6:d:/1/123123/Hardware/MLX90614\mlx90614.c ****  */
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 3
+
+
+   7:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+   8:d:/1/123123/Hardware/MLX90614\mlx90614.c **** #include <assert.h>
+   9:d:/1/123123/Hardware/MLX90614\mlx90614.c **** #include <stdio.h>
+  10:d:/1/123123/Hardware/MLX90614\mlx90614.c **** #include <stdint.h>
+  11:d:/1/123123/Hardware/MLX90614\mlx90614.c **** #include <string.h>
+  12:d:/1/123123/Hardware/MLX90614\mlx90614.c **** #include "stm32l4xx_hal.h"
+  13:d:/1/123123/Hardware/MLX90614\mlx90614.c **** #include "mlx90614.h"
+  14:d:/1/123123/Hardware/MLX90614\mlx90614.c **** #include "i2c.h"
+  15:d:/1/123123/Hardware/MLX90614\mlx90614.c **** char *temp_buff= "";
+  16:d:/1/123123/Hardware/MLX90614\mlx90614.c **** int i=0;
+  17:d:/1/123123/Hardware/MLX90614\mlx90614.c **** static const uint8_t crc_table[] = {
+  18:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0x00, 0x07, 0x0e, 0x09, 0x1c, 0x1b, 0x12, 0x15, 0x38, 0x3f, 0x36, 0x31,
+  19:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0x24, 0x23, 0x2a, 0x2d, 0x70, 0x77, 0x7e, 0x79, 0x6c, 0x6b, 0x62, 0x65,
+  20:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0x48, 0x4f, 0x46, 0x41, 0x54, 0x53, 0x5a, 0x5d, 0xe0, 0xe7, 0xee, 0xe9,
+  21:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0xfc, 0xfb, 0xf2, 0xf5, 0xd8, 0xdf, 0xd6, 0xd1, 0xc4, 0xc3, 0xca, 0xcd,
+  22:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0x90, 0x97, 0x9e, 0x99, 0x8c, 0x8b, 0x82, 0x85, 0xa8, 0xaf, 0xa6, 0xa1,
+  23:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0xb4, 0xb3, 0xba, 0xbd, 0xc7, 0xc0, 0xc9, 0xce, 0xdb, 0xdc, 0xd5, 0xd2,
+  24:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0xff, 0xf8, 0xf1, 0xf6, 0xe3, 0xe4, 0xed, 0xea, 0xb7, 0xb0, 0xb9, 0xbe,
+  25:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0xab, 0xac, 0xa5, 0xa2, 0x8f, 0x88, 0x81, 0x86, 0x93, 0x94, 0x9d, 0x9a,
+  26:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0x27, 0x20, 0x29, 0x2e, 0x3b, 0x3c, 0x35, 0x32, 0x1f, 0x18, 0x11, 0x16,
+  27:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0x03, 0x04, 0x0d, 0x0a, 0x57, 0x50, 0x59, 0x5e, 0x4b, 0x4c, 0x45, 0x42,
+  28:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0x6f, 0x68, 0x61, 0x66, 0x73, 0x74, 0x7d, 0x7a, 0x89, 0x8e, 0x87, 0x80,
+  29:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0x95, 0x92, 0x9b, 0x9c, 0xb1, 0xb6, 0xbf, 0xb8, 0xad, 0xaa, 0xa3, 0xa4,
+  30:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0xf9, 0xfe, 0xf7, 0xf0, 0xe5, 0xe2, 0xeb, 0xec, 0xc1, 0xc6, 0xcf, 0xc8,
+  31:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0xdd, 0xda, 0xd3, 0xd4, 0x69, 0x6e, 0x67, 0x60, 0x75, 0x72, 0x7b, 0x7c,
+  32:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0x51, 0x56, 0x5f, 0x58, 0x4d, 0x4a, 0x43, 0x44, 0x19, 0x1e, 0x17, 0x10,
+  33:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0x05, 0x02, 0x0b, 0x0c, 0x21, 0x26, 0x2f, 0x28, 0x3d, 0x3a, 0x33, 0x34,
+  34:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0x4e, 0x49, 0x40, 0x47, 0x52, 0x55, 0x5c, 0x5b, 0x76, 0x71, 0x78, 0x7f,
+  35:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0x6a, 0x6d, 0x64, 0x63, 0x3e, 0x39, 0x30, 0x37, 0x22, 0x25, 0x2c, 0x2b,
+  36:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0x06, 0x01, 0x08, 0x0f, 0x1a, 0x1d, 0x14, 0x13, 0xae, 0xa9, 0xa0, 0xa7,
+  37:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0xb2, 0xb5, 0xbc, 0xbb, 0x96, 0x91, 0x98, 0x9f, 0x8a, 0x8d, 0x84, 0x83,
+  38:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0xde, 0xd9, 0xd0, 0xd7, 0xc2, 0xc5, 0xcc, 0xcb, 0xe6, 0xe1, 0xe8, 0xef,
+  39:d:/1/123123/Hardware/MLX90614\mlx90614.c ****     0xfa, 0xfd, 0xf4, 0xf3
+  40:d:/1/123123/Hardware/MLX90614\mlx90614.c **** };
+  41:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  42:d:/1/123123/Hardware/MLX90614\mlx90614.c **** uint8_t CRC8_Calc (uint8_t *p, uint8_t len) {
+  67              		.loc 1 42 45
+  68              		.cfi_startproc
+  69              		@ args = 0, pretend = 0, frame = 16
+  70              		@ frame_needed = 1, uses_anonymous_args = 0
+  71              		@ link register save eliminated.
+  72 0000 80B4     		push	{r7}
+  73              	.LCFI0:
+  74              		.cfi_def_cfa_offset 4
+  75              		.cfi_offset 7, -4
+  76 0002 85B0     		sub	sp, sp, #20
+  77              	.LCFI1:
+  78              		.cfi_def_cfa_offset 24
+  79 0004 00AF     		add	r7, sp, #0
+  80              	.LCFI2:
+  81              		.cfi_def_cfa_register 7
+  82 0006 7860     		str	r0, [r7, #4]
+  83 0008 0B46     		mov	r3, r1
+  84 000a FB70     		strb	r3, [r7, #3]
+  43:d:/1/123123/Hardware/MLX90614\mlx90614.c ****         uint16_t i;
+  44:d:/1/123123/Hardware/MLX90614\mlx90614.c ****         uint16_t crc = 0x0;
+  85              		.loc 1 44 18
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 4
+
+
+  86 000c 0023     		movs	r3, #0
+  87 000e FB81     		strh	r3, [r7, #14]	@ movhi
+  45:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  46:d:/1/123123/Hardware/MLX90614\mlx90614.c ****         while (len--) {
+  88              		.loc 1 46 15
+  89 0010 15E0     		b	.L2
+  90              	.L3:
+  47:d:/1/123123/Hardware/MLX90614\mlx90614.c ****                 i = (crc ^ *p++) & 0xFF;
+  91              		.loc 1 47 30
+  92 0012 7B68     		ldr	r3, [r7, #4]
+  93 0014 5A1C     		adds	r2, r3, #1
+  94 0016 7A60     		str	r2, [r7, #4]
+  95              		.loc 1 47 28
+  96 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  97 001a 9AB2     		uxth	r2, r3
+  98              		.loc 1 47 26
+  99 001c FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 100 001e 5340     		eors	r3, r3, r2
+ 101 0020 9BB2     		uxth	r3, r3
+ 102              		.loc 1 47 19
+ 103 0022 DBB2     		uxtb	r3, r3
+ 104 0024 BB81     		strh	r3, [r7, #12]	@ movhi
+  48:d:/1/123123/Hardware/MLX90614\mlx90614.c ****                 crc = (crc_table[i] ^ (crc << 8)) & 0xFF;
+ 105              		.loc 1 48 33
+ 106 0026 BB89     		ldrh	r3, [r7, #12]
+ 107 0028 0B4A     		ldr	r2, .L5
+ 108 002a D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 109 002c 1AB2     		sxth	r2, r3
+ 110              		.loc 1 48 44
+ 111 002e FB89     		ldrh	r3, [r7, #14]
+ 112 0030 1B02     		lsls	r3, r3, #8
+ 113              		.loc 1 48 37
+ 114 0032 1BB2     		sxth	r3, r3
+ 115 0034 5340     		eors	r3, r3, r2
+ 116 0036 1BB2     		sxth	r3, r3
+ 117              		.loc 1 48 51
+ 118 0038 9BB2     		uxth	r3, r3
+ 119              		.loc 1 48 21
+ 120 003a DBB2     		uxtb	r3, r3
+ 121 003c FB81     		strh	r3, [r7, #14]	@ movhi
+ 122              	.L2:
+  46:d:/1/123123/Hardware/MLX90614\mlx90614.c ****                 i = (crc ^ *p++) & 0xFF;
+ 123              		.loc 1 46 19
+ 124 003e FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 125 0040 5A1E     		subs	r2, r3, #1
+ 126 0042 FA70     		strb	r2, [r7, #3]
+  46:d:/1/123123/Hardware/MLX90614\mlx90614.c ****                 i = (crc ^ *p++) & 0xFF;
+ 127              		.loc 1 46 15
+ 128 0044 002B     		cmp	r3, #0
+ 129 0046 E4D1     		bne	.L3
+  49:d:/1/123123/Hardware/MLX90614\mlx90614.c ****         }
+  50:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  51:d:/1/123123/Hardware/MLX90614\mlx90614.c ****         return crc & 0xFF;
+ 130              		.loc 1 51 20
+ 131 0048 FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 132 004a DBB2     		uxtb	r3, r3
+  52:d:/1/123123/Hardware/MLX90614\mlx90614.c **** }
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 5
+
+
+ 133              		.loc 1 52 1
+ 134 004c 1846     		mov	r0, r3
+ 135 004e 1437     		adds	r7, r7, #20
+ 136              	.LCFI3:
+ 137              		.cfi_def_cfa_offset 4
+ 138 0050 BD46     		mov	sp, r7
+ 139              	.LCFI4:
+ 140              		.cfi_def_cfa_register 13
+ 141              		@ sp needed
+ 142 0052 5DF8047B 		ldr	r7, [sp], #4
+ 143              	.LCFI5:
+ 144              		.cfi_restore 7
+ 145              		.cfi_def_cfa_offset 0
+ 146 0056 7047     		bx	lr
+ 147              	.L6:
+ 148              		.align	2
+ 149              	.L5:
+ 150 0058 00000000 		.word	crc_table
+ 151              		.cfi_endproc
+ 152              	.LFE287:
+ 154              		.section	.text.MLX90614_WriteReg,"ax",%progbits
+ 155              		.align	1
+ 156              		.global	MLX90614_WriteReg
+ 157              		.syntax unified
+ 158              		.thumb
+ 159              		.thumb_func
+ 160              		.fpu fpv4-sp-d16
+ 162              	MLX90614_WriteReg:
+ 163              	.LFB288:
+  53:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  54:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  55:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  56:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  57:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  58:d:/1/123123/Hardware/MLX90614\mlx90614.c **** void MLX90614_WriteReg(uint8_t devAddr, uint8_t regAddr, uint16_t data) {
+ 164              		.loc 1 58 73
+ 165              		.cfi_startproc
+ 166              		@ args = 0, pretend = 0, frame = 16
+ 167              		@ frame_needed = 1, uses_anonymous_args = 0
+ 168 0000 90B5     		push	{r4, r7, lr}
+ 169              	.LCFI6:
+ 170              		.cfi_def_cfa_offset 12
+ 171              		.cfi_offset 4, -12
+ 172              		.cfi_offset 7, -8
+ 173              		.cfi_offset 14, -4
+ 174 0002 87B0     		sub	sp, sp, #28
+ 175              	.LCFI7:
+ 176              		.cfi_def_cfa_offset 40
+ 177 0004 02AF     		add	r7, sp, #8
+ 178              	.LCFI8:
+ 179              		.cfi_def_cfa 7, 32
+ 180 0006 0346     		mov	r3, r0
+ 181 0008 FB71     		strb	r3, [r7, #7]
+ 182 000a 0B46     		mov	r3, r1
+ 183 000c BB71     		strb	r3, [r7, #6]
+ 184 000e 1346     		mov	r3, r2	@ movhi
+ 185 0010 BB80     		strh	r3, [r7, #4]	@ movhi
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 6
+
+
+  59:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  60:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	uint8_t i2cdata[4], temp[4];
+  61:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  62:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	temp[0] = (devAddr << 1);
+ 186              		.loc 1 62 21
+ 187 0012 FB79     		ldrb	r3, [r7, #7]
+ 188 0014 5B00     		lsls	r3, r3, #1
+ 189 0016 DBB2     		uxtb	r3, r3
+ 190              		.loc 1 62 10
+ 191 0018 3B72     		strb	r3, [r7, #8]
+  63:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	temp[1] = regAddr;
+ 192              		.loc 1 63 10
+ 193 001a BB79     		ldrb	r3, [r7, #6]
+ 194 001c 7B72     		strb	r3, [r7, #9]
+  64:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  65:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	temp[2] = 0x00;
+ 195              		.loc 1 65 10
+ 196 001e 0023     		movs	r3, #0
+ 197 0020 BB72     		strb	r3, [r7, #10]
+  66:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	temp[3] = 0x00;
+ 198              		.loc 1 66 10
+ 199 0022 0023     		movs	r3, #0
+ 200 0024 FB72     		strb	r3, [r7, #11]
+  67:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  68:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	// For a write word command, in the crc8 calculus, you have to include [SA_W, Command, LSB, MSB]
+  69:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  70:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	i2cdata[0] = temp[1]; //EEPROM-address
+ 201              		.loc 1 70 19
+ 202 0026 7B7A     		ldrb	r3, [r7, #9]	@ zero_extendqisi2
+ 203              		.loc 1 70 13
+ 204 0028 3B73     		strb	r3, [r7, #12]
+  71:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	i2cdata[1] = temp[2]; //Delete-Byte, low
+ 205              		.loc 1 71 19
+ 206 002a BB7A     		ldrb	r3, [r7, #10]	@ zero_extendqisi2
+ 207              		.loc 1 71 13
+ 208 002c 7B73     		strb	r3, [r7, #13]
+  72:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	i2cdata[2] = temp[3]; //Delete-Byte, high
+ 209              		.loc 1 72 19
+ 210 002e FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 211              		.loc 1 72 13
+ 212 0030 BB73     		strb	r3, [r7, #14]
+  73:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	i2cdata[3] = CRC8_Calc(temp, 4); //CRC8-checksum calculation: http://www.sunshine2k.de/coding/java
+ 213              		.loc 1 73 15
+ 214 0032 07F10803 		add	r3, r7, #8
+ 215 0036 0421     		movs	r1, #4
+ 216 0038 1846     		mov	r0, r3
+ 217 003a FFF7FEFF 		bl	CRC8_Calc
+ 218 003e 0346     		mov	r3, r0
+ 219              		.loc 1 73 13
+ 220 0040 FB73     		strb	r3, [r7, #15]
+  74:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  75:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	HAL_I2C_Master_Transmit(&hi2c1, (devAddr << 1), i2cdata, 4, 0xFFFF);
+ 221              		.loc 1 75 2
+ 222 0042 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 223 0044 9BB2     		uxth	r3, r3
+ 224 0046 5B00     		lsls	r3, r3, #1
+ 225 0048 99B2     		uxth	r1, r3
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 7
+
+
+ 226 004a 07F10C02 		add	r2, r7, #12
+ 227 004e 4FF6FF73 		movw	r3, #65535
+ 228 0052 0093     		str	r3, [sp]
+ 229 0054 0423     		movs	r3, #4
+ 230 0056 2748     		ldr	r0, .L8
+ 231 0058 FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+  76:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	HAL_Delay(10);
+ 232              		.loc 1 76 2
+ 233 005c 0A20     		movs	r0, #10
+ 234 005e FFF7FEFF 		bl	HAL_Delay
+  77:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  78:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	MLX90614_SendDebugMsg(MLX90614_DBG_MSG_W, devAddr, i2cdata[0], (i2cdata[1] <<8 | i2cdata[2]), i2cd
+ 235              		.loc 1 78 2
+ 236 0062 387B     		ldrb	r0, [r7, #12]	@ zero_extendqisi2
+ 237              		.loc 1 78 73
+ 238 0064 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 239              		.loc 1 78 77
+ 240 0066 1B02     		lsls	r3, r3, #8
+ 241              		.loc 1 78 81
+ 242 0068 1AB2     		sxth	r2, r3
+ 243              		.loc 1 78 90
+ 244 006a BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 245 006c 1BB2     		sxth	r3, r3
+ 246              		.loc 1 78 81
+ 247 006e 1343     		orrs	r3, r3, r2
+ 248 0070 1BB2     		sxth	r3, r3
+ 249              		.loc 1 78 2
+ 250 0072 9AB2     		uxth	r2, r3
+ 251 0074 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 252 0076 F979     		ldrb	r1, [r7, #7]	@ zero_extendqisi2
+ 253 0078 0024     		movs	r4, #0
+ 254 007a 0194     		str	r4, [sp, #4]
+ 255 007c 0093     		str	r3, [sp]
+ 256 007e 1346     		mov	r3, r2
+ 257 0080 0246     		mov	r2, r0
+ 258 0082 0020     		movs	r0, #0
+ 259 0084 FFF7FEFF 		bl	MLX90614_SendDebugMsg
+  79:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  80:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	temp[2] = data & 0xFF; //Getting LSB first
+ 260              		.loc 1 80 10
+ 261 0088 BB88     		ldrh	r3, [r7, #4]	@ movhi
+ 262 008a DBB2     		uxtb	r3, r3
+ 263 008c BB72     		strb	r3, [r7, #10]
+  81:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	temp[3] = data >> 8;   //Getting MSB after
+ 264              		.loc 1 81 10
+ 265 008e BB88     		ldrh	r3, [r7, #4]
+ 266 0090 1B0A     		lsrs	r3, r3, #8
+ 267 0092 9BB2     		uxth	r3, r3
+ 268 0094 DBB2     		uxtb	r3, r3
+ 269 0096 FB72     		strb	r3, [r7, #11]
+  82:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  83:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	i2cdata[0] = temp[1]; //EEPROM-address
+ 270              		.loc 1 83 19
+ 271 0098 7B7A     		ldrb	r3, [r7, #9]	@ zero_extendqisi2
+ 272              		.loc 1 83 13
+ 273 009a 3B73     		strb	r3, [r7, #12]
+  84:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	i2cdata[1] = temp[2]; //Delete-Byte, low
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 8
+
+
+ 274              		.loc 1 84 19
+ 275 009c BB7A     		ldrb	r3, [r7, #10]	@ zero_extendqisi2
+ 276              		.loc 1 84 13
+ 277 009e 7B73     		strb	r3, [r7, #13]
+  85:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	i2cdata[2] = temp[3]; //Delete-Byte, high
+ 278              		.loc 1 85 19
+ 279 00a0 FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 280              		.loc 1 85 13
+ 281 00a2 BB73     		strb	r3, [r7, #14]
+  86:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	i2cdata[3] = CRC8_Calc(temp, 4); //CRC8-checksum calculation: http://www.sunshine2k.de/coding/java
+ 282              		.loc 1 86 15
+ 283 00a4 07F10803 		add	r3, r7, #8
+ 284 00a8 0421     		movs	r1, #4
+ 285 00aa 1846     		mov	r0, r3
+ 286 00ac FFF7FEFF 		bl	CRC8_Calc
+ 287 00b0 0346     		mov	r3, r0
+ 288              		.loc 1 86 13
+ 289 00b2 FB73     		strb	r3, [r7, #15]
+  87:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  88:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	HAL_I2C_Master_Transmit(&hi2c1, (devAddr << 1), i2cdata, 4, 0xFFFF);
+ 290              		.loc 1 88 2
+ 291 00b4 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 292 00b6 9BB2     		uxth	r3, r3
+ 293 00b8 5B00     		lsls	r3, r3, #1
+ 294 00ba 99B2     		uxth	r1, r3
+ 295 00bc 07F10C02 		add	r2, r7, #12
+ 296 00c0 4FF6FF73 		movw	r3, #65535
+ 297 00c4 0093     		str	r3, [sp]
+ 298 00c6 0423     		movs	r3, #4
+ 299 00c8 0A48     		ldr	r0, .L8
+ 300 00ca FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+  89:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	HAL_Delay(10);
+ 301              		.loc 1 89 2
+ 302 00ce 0A20     		movs	r0, #10
+ 303 00d0 FFF7FEFF 		bl	HAL_Delay
+  90:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	MLX90614_SendDebugMsg(MLX90614_DBG_MSG_W, devAddr, i2cdata[0], data, i2cdata[3], 0x00);
+ 304              		.loc 1 90 2
+ 305 00d4 3A7B     		ldrb	r2, [r7, #12]	@ zero_extendqisi2
+ 306 00d6 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 307 00d8 B888     		ldrh	r0, [r7, #4]
+ 308 00da F979     		ldrb	r1, [r7, #7]	@ zero_extendqisi2
+ 309 00dc 0024     		movs	r4, #0
+ 310 00de 0194     		str	r4, [sp, #4]
+ 311 00e0 0093     		str	r3, [sp]
+ 312 00e2 0346     		mov	r3, r0
+ 313 00e4 0020     		movs	r0, #0
+ 314 00e6 FFF7FEFF 		bl	MLX90614_SendDebugMsg
+  91:d:/1/123123/Hardware/MLX90614\mlx90614.c **** }
+ 315              		.loc 1 91 1
+ 316 00ea 00BF     		nop
+ 317 00ec 1437     		adds	r7, r7, #20
+ 318              	.LCFI9:
+ 319              		.cfi_def_cfa_offset 12
+ 320 00ee BD46     		mov	sp, r7
+ 321              	.LCFI10:
+ 322              		.cfi_def_cfa_register 13
+ 323              		@ sp needed
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 9
+
+
+ 324 00f0 90BD     		pop	{r4, r7, pc}
+ 325              	.L9:
+ 326 00f2 00BF     		.align	2
+ 327              	.L8:
+ 328 00f4 00000000 		.word	hi2c1
+ 329              		.cfi_endproc
+ 330              	.LFE288:
+ 332              		.section	.text.MLX90614_ReadReg,"ax",%progbits
+ 333              		.align	1
+ 334              		.global	MLX90614_ReadReg
+ 335              		.syntax unified
+ 336              		.thumb
+ 337              		.thumb_func
+ 338              		.fpu fpv4-sp-d16
+ 340              	MLX90614_ReadReg:
+ 341              	.LFB289:
+  92:d:/1/123123/Hardware/MLX90614\mlx90614.c **** uint16_t MLX90614_ReadReg(uint8_t devAddr, uint8_t regAddr, uint8_t dbg_lvl) {
+ 342              		.loc 1 92 78
+ 343              		.cfi_startproc
+ 344              		@ args = 0, pretend = 0, frame = 24
+ 345              		@ frame_needed = 1, uses_anonymous_args = 0
+ 346 0000 90B5     		push	{r4, r7, lr}
+ 347              	.LCFI11:
+ 348              		.cfi_def_cfa_offset 12
+ 349              		.cfi_offset 4, -12
+ 350              		.cfi_offset 7, -8
+ 351              		.cfi_offset 14, -4
+ 352 0002 8BB0     		sub	sp, sp, #44
+ 353              	.LCFI12:
+ 354              		.cfi_def_cfa_offset 56
+ 355 0004 04AF     		add	r7, sp, #16
+ 356              	.LCFI13:
+ 357              		.cfi_def_cfa 7, 40
+ 358 0006 0346     		mov	r3, r0
+ 359 0008 FB71     		strb	r3, [r7, #7]
+ 360 000a 0B46     		mov	r3, r1
+ 361 000c BB71     		strb	r3, [r7, #6]
+ 362 000e 1346     		mov	r3, r2
+ 363 0010 7B71     		strb	r3, [r7, #5]
+  93:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	uint16_t data;
+  94:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	uint8_t in_buff[3], crc_buff[5], crc;
+  95:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  96:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	HAL_I2C_Mem_Read(&hi2c1, (devAddr<<1), regAddr, 1, in_buff, 3, 100);
+ 364              		.loc 1 96 2
+ 365 0012 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 366 0014 9BB2     		uxth	r3, r3
+ 367 0016 5B00     		lsls	r3, r3, #1
+ 368 0018 99B2     		uxth	r1, r3
+ 369 001a BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 370 001c 9AB2     		uxth	r2, r3
+ 371 001e 6423     		movs	r3, #100
+ 372 0020 0293     		str	r3, [sp, #8]
+ 373 0022 0323     		movs	r3, #3
+ 374 0024 0193     		str	r3, [sp, #4]
+ 375 0026 07F11003 		add	r3, r7, #16
+ 376 002a 0093     		str	r3, [sp]
+ 377 002c 0123     		movs	r3, #1
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 10
+
+
+ 378 002e 1E48     		ldr	r0, .L14
+ 379 0030 FFF7FEFF 		bl	HAL_I2C_Mem_Read
+  97:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+  98:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	// For a read word command, in the crc8 calculus, you have to include [SA_W, Command, SA_R, LSB, M
+  99:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	crc_buff[0] = (devAddr<<1);
+ 380              		.loc 1 99 24
+ 381 0034 FB79     		ldrb	r3, [r7, #7]
+ 382 0036 5B00     		lsls	r3, r3, #1
+ 383 0038 DBB2     		uxtb	r3, r3
+ 384              		.loc 1 99 14
+ 385 003a 3B72     		strb	r3, [r7, #8]
+ 100:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	crc_buff[1] = regAddr;
+ 386              		.loc 1 100 14
+ 387 003c BB79     		ldrb	r3, [r7, #6]
+ 388 003e 7B72     		strb	r3, [r7, #9]
+ 101:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	crc_buff[2] = (devAddr<<1) + 1;
+ 389              		.loc 1 101 24
+ 390 0040 FB79     		ldrb	r3, [r7, #7]
+ 391 0042 5B00     		lsls	r3, r3, #1
+ 392 0044 DBB2     		uxtb	r3, r3
+ 393              		.loc 1 101 29
+ 394 0046 0133     		adds	r3, r3, #1
+ 395 0048 DBB2     		uxtb	r3, r3
+ 396              		.loc 1 101 14
+ 397 004a BB72     		strb	r3, [r7, #10]
+ 102:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	crc_buff[3] = in_buff[0];
+ 398              		.loc 1 102 23
+ 399 004c 3B7C     		ldrb	r3, [r7, #16]	@ zero_extendqisi2
+ 400              		.loc 1 102 14
+ 401 004e FB72     		strb	r3, [r7, #11]
+ 103:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	crc_buff[4] = in_buff[1];
+ 402              		.loc 1 103 23
+ 403 0050 7B7C     		ldrb	r3, [r7, #17]	@ zero_extendqisi2
+ 404              		.loc 1 103 14
+ 405 0052 3B73     		strb	r3, [r7, #12]
+ 104:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	crc = CRC8_Calc(crc_buff, 5);
+ 406              		.loc 1 104 8
+ 407 0054 07F10803 		add	r3, r7, #8
+ 408 0058 0521     		movs	r1, #5
+ 409 005a 1846     		mov	r0, r3
+ 410 005c FFF7FEFF 		bl	CRC8_Calc
+ 411 0060 0346     		mov	r3, r0
+ 412 0062 7B75     		strb	r3, [r7, #21]
+ 105:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+ 106:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	data = (in_buff[1] <<8 | in_buff[0]);
+ 413              		.loc 1 106 17
+ 414 0064 7B7C     		ldrb	r3, [r7, #17]	@ zero_extendqisi2
+ 415              		.loc 1 106 21
+ 416 0066 1B02     		lsls	r3, r3, #8
+ 417              		.loc 1 106 25
+ 418 0068 1AB2     		sxth	r2, r3
+ 419              		.loc 1 106 34
+ 420 006a 3B7C     		ldrb	r3, [r7, #16]	@ zero_extendqisi2
+ 421 006c 1BB2     		sxth	r3, r3
+ 422              		.loc 1 106 25
+ 423 006e 1343     		orrs	r3, r3, r2
+ 424 0070 1BB2     		sxth	r3, r3
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 11
+
+
+ 425              		.loc 1 106 7
+ 426 0072 FB82     		strh	r3, [r7, #22]	@ movhi
+ 107:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+ 108:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	//TODO: implement CRC8 check on data received
+ 109:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	if (crc != in_buff[2]) {
+ 427              		.loc 1 109 20
+ 428 0074 BB7C     		ldrb	r3, [r7, #18]	@ zero_extendqisi2
+ 429              		.loc 1 109 5
+ 430 0076 7A7D     		ldrb	r2, [r7, #21]	@ zero_extendqisi2
+ 431 0078 9A42     		cmp	r2, r3
+ 432 007a 01D0     		beq	.L11
+ 110:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 		data = 0x0000;
+ 433              		.loc 1 110 8
+ 434 007c 0023     		movs	r3, #0
+ 435 007e FB82     		strh	r3, [r7, #22]	@ movhi
+ 436              	.L11:
+ 111:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	}
+ 112:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	if(dbg_lvl == MLX90614_DBG_ON)	MLX90614_SendDebugMsg(MLX90614_DBG_MSG_R, devAddr, regAddr, data, i
+ 437              		.loc 1 112 4
+ 438 0080 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 439 0082 012B     		cmp	r3, #1
+ 440 0084 0BD1     		bne	.L12
+ 441              		.loc 1 112 33 discriminator 1
+ 442 0086 BB7C     		ldrb	r3, [r7, #18]	@ zero_extendqisi2
+ 443 0088 FC8A     		ldrh	r4, [r7, #22]
+ 444 008a B879     		ldrb	r0, [r7, #6]	@ zero_extendqisi2
+ 445 008c F979     		ldrb	r1, [r7, #7]	@ zero_extendqisi2
+ 446 008e 7A7D     		ldrb	r2, [r7, #21]	@ zero_extendqisi2
+ 447 0090 0192     		str	r2, [sp, #4]
+ 448 0092 0093     		str	r3, [sp]
+ 449 0094 2346     		mov	r3, r4
+ 450 0096 0246     		mov	r2, r0
+ 451 0098 0120     		movs	r0, #1
+ 452 009a FFF7FEFF 		bl	MLX90614_SendDebugMsg
+ 453              	.L12:
+ 113:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+ 114:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	//HAL_Delay(1);
+ 115:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	return data;
+ 454              		.loc 1 115 9
+ 455 009e FB8A     		ldrh	r3, [r7, #22]
+ 116:d:/1/123123/Hardware/MLX90614\mlx90614.c **** }
+ 456              		.loc 1 116 1
+ 457 00a0 1846     		mov	r0, r3
+ 458 00a2 1C37     		adds	r7, r7, #28
+ 459              	.LCFI14:
+ 460              		.cfi_def_cfa_offset 12
+ 461 00a4 BD46     		mov	sp, r7
+ 462              	.LCFI15:
+ 463              		.cfi_def_cfa_register 13
+ 464              		@ sp needed
+ 465 00a6 90BD     		pop	{r4, r7, pc}
+ 466              	.L15:
+ 467              		.align	2
+ 468              	.L14:
+ 469 00a8 00000000 		.word	hi2c1
+ 470              		.cfi_endproc
+ 471              	.LFE289:
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 12
+
+
+ 473              		.global	__aeabi_i2d
+ 474              		.global	__aeabi_dmul
+ 475              		.global	__aeabi_dsub
+ 476              		.global	__aeabi_d2f
+ 477              		.section	.text.MLX90614_ReadTemp,"ax",%progbits
+ 478              		.align	1
+ 479              		.global	MLX90614_ReadTemp
+ 480              		.syntax unified
+ 481              		.thumb
+ 482              		.thumb_func
+ 483              		.fpu fpv4-sp-d16
+ 485              	MLX90614_ReadTemp:
+ 486              	.LFB290:
+ 117:d:/1/123123/Hardware/MLX90614\mlx90614.c **** float MLX90614_ReadTemp(uint8_t devAddr, uint8_t regAddr) {
+ 487              		.loc 1 117 59
+ 488              		.cfi_startproc
+ 489              		@ args = 0, pretend = 0, frame = 16
+ 490              		@ frame_needed = 1, uses_anonymous_args = 0
+ 491 0000 80B5     		push	{r7, lr}
+ 492              	.LCFI16:
+ 493              		.cfi_def_cfa_offset 8
+ 494              		.cfi_offset 7, -8
+ 495              		.cfi_offset 14, -4
+ 496 0002 84B0     		sub	sp, sp, #16
+ 497              	.LCFI17:
+ 498              		.cfi_def_cfa_offset 24
+ 499 0004 00AF     		add	r7, sp, #0
+ 500              	.LCFI18:
+ 501              		.cfi_def_cfa_register 7
+ 502 0006 0346     		mov	r3, r0
+ 503 0008 0A46     		mov	r2, r1
+ 504 000a FB71     		strb	r3, [r7, #7]
+ 505 000c 1346     		mov	r3, r2
+ 506 000e BB71     		strb	r3, [r7, #6]
+ 118:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	float temp;
+ 119:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	uint16_t data;
+ 120:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+ 121:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	data = MLX90614_ReadReg(devAddr, regAddr, MLX90614_DBG_OFF);
+ 507              		.loc 1 121 9
+ 508 0010 B979     		ldrb	r1, [r7, #6]	@ zero_extendqisi2
+ 509 0012 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 510 0014 0022     		movs	r2, #0
+ 511 0016 1846     		mov	r0, r3
+ 512 0018 FFF7FEFF 		bl	MLX90614_ReadReg
+ 513 001c 0346     		mov	r3, r0
+ 514 001e FB81     		strh	r3, [r7, #14]	@ movhi
+ 122:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	temp = data*0.02 - 273.15;
+ 515              		.loc 1 122 13
+ 516 0020 FB89     		ldrh	r3, [r7, #14]
+ 517 0022 1846     		mov	r0, r3
+ 518 0024 FFF7FEFF 		bl	__aeabi_i2d
+ 519              	.LVL0:
+ 520 0028 0FA3     		adr	r3, .L18
+ 521 002a D3E90023 		ldrd	r2, [r3]
+ 522 002e FFF7FEFF 		bl	__aeabi_dmul
+ 523              	.LVL1:
+ 524 0032 0246     		mov	r2, r0
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 13
+
+
+ 525 0034 0B46     		mov	r3, r1
+ 526 0036 1046     		mov	r0, r2
+ 527 0038 1946     		mov	r1, r3
+ 528              		.loc 1 122 19
+ 529 003a 0DA3     		adr	r3, .L18+8
+ 530 003c D3E90023 		ldrd	r2, [r3]
+ 531 0040 FFF7FEFF 		bl	__aeabi_dsub
+ 532              	.LVL2:
+ 533 0044 0246     		mov	r2, r0
+ 534 0046 0B46     		mov	r3, r1
+ 535              		.loc 1 122 7
+ 536 0048 1046     		mov	r0, r2
+ 537 004a 1946     		mov	r1, r3
+ 538 004c FFF7FEFF 		bl	__aeabi_d2f
+ 539              	.LVL3:
+ 540 0050 0346     		mov	r3, r0	@ float
+ 541 0052 BB60     		str	r3, [r7, #8]	@ float
+ 123:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	return temp;
+ 542              		.loc 1 123 9
+ 543 0054 BB68     		ldr	r3, [r7, #8]	@ float
+ 544 0056 07EE903A 		vmov	s15, r3
+ 124:d:/1/123123/Hardware/MLX90614\mlx90614.c **** }
+ 545              		.loc 1 124 1
+ 546 005a B0EE670A 		vmov.f32	s0, s15
+ 547 005e 1037     		adds	r7, r7, #16
+ 548              	.LCFI19:
+ 549              		.cfi_def_cfa_offset 8
+ 550 0060 BD46     		mov	sp, r7
+ 551              	.LCFI20:
+ 552              		.cfi_def_cfa_register 13
+ 553              		@ sp needed
+ 554 0062 80BD     		pop	{r7, pc}
+ 555              	.L19:
+ 556 0064 AFF30080 		.align	3
+ 557              	.L18:
+ 558 0068 7B14AE47 		.word	1202590843
+ 559 006c E17A943F 		.word	1066695393
+ 560 0070 66666666 		.word	1717986918
+ 561 0074 66127140 		.word	1081152102
+ 562              		.cfi_endproc
+ 563              	.LFE290:
+ 565              		.section	.rodata
+ 566 0001 000000   		.align	2
+ 567              	.LC1:
+ 568 0004 2E00     		.ascii	".\000"
+ 569 0006 0000     		.align	2
+ 570              	.LC2:
+ 571 0008 30782558 		.ascii	"0x%X\000"
+ 571      00
+ 572              		.section	.text.MLX90614_ScanDevices,"ax",%progbits
+ 573              		.align	1
+ 574              		.global	MLX90614_ScanDevices
+ 575              		.syntax unified
+ 576              		.thumb
+ 577              		.thumb_func
+ 578              		.fpu fpv4-sp-d16
+ 580              	MLX90614_ScanDevices:
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 14
+
+
+ 581              	.LFB291:
+ 125:d:/1/123123/Hardware/MLX90614\mlx90614.c **** void MLX90614_ScanDevices (void) {
+ 582              		.loc 1 125 34
+ 583              		.cfi_startproc
+ 584              		@ args = 0, pretend = 0, frame = 8
+ 585              		@ frame_needed = 1, uses_anonymous_args = 0
+ 586 0000 80B5     		push	{r7, lr}
+ 587              	.LCFI21:
+ 588              		.cfi_def_cfa_offset 8
+ 589              		.cfi_offset 7, -8
+ 590              		.cfi_offset 14, -4
+ 591 0002 82B0     		sub	sp, sp, #8
+ 592              	.LCFI22:
+ 593              		.cfi_def_cfa_offset 16
+ 594 0004 00AF     		add	r7, sp, #0
+ 595              	.LCFI23:
+ 596              		.cfi_def_cfa_register 7
+ 126:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	HAL_StatusTypeDef result;
+ 127:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	for ( i = 0; i<128; i++)
+ 597              		.loc 1 127 10
+ 598 0006 194B     		ldr	r3, .L25
+ 599 0008 0022     		movs	r2, #0
+ 600 000a 1A60     		str	r2, [r3]
+ 601              		.loc 1 127 2
+ 602 000c 24E0     		b	.L21
+ 603              	.L24:
+ 128:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 		  {
+ 129:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 			  result = HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t) (i<<1), 2, 2);
+ 604              		.loc 1 129 15
+ 605 000e 174B     		ldr	r3, .L25
+ 606 0010 1B68     		ldr	r3, [r3]
+ 607 0012 9BB2     		uxth	r3, r3
+ 608 0014 5B00     		lsls	r3, r3, #1
+ 609 0016 99B2     		uxth	r1, r3
+ 610 0018 0223     		movs	r3, #2
+ 611 001a 0222     		movs	r2, #2
+ 612 001c 1448     		ldr	r0, .L25+4
+ 613 001e FFF7FEFF 		bl	HAL_I2C_IsDeviceReady
+ 614 0022 0346     		mov	r3, r0
+ 615 0024 FB71     		strb	r3, [r7, #7]
+ 130:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 			  if (result != HAL_OK)
+ 616              		.loc 1 130 9
+ 617 0026 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 618 0028 002B     		cmp	r3, #0
+ 619 002a 05D0     		beq	.L22
+ 131:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 			  {
+ 132:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 				  sprintf(temp_buff, ".");
+ 620              		.loc 1 132 7
+ 621 002c 114B     		ldr	r3, .L25+8
+ 622 002e 1B68     		ldr	r3, [r3]
+ 623 0030 1149     		ldr	r1, .L25+12
+ 624 0032 1846     		mov	r0, r3
+ 625 0034 FFF7FEFF 		bl	sprintf
+ 626              	.L22:
+ 133:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 			//	  CDC_Transmit_FS(temp_buff, strlen((const char *)temp_buff));
+ 134:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 			  }
+ 135:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 			  if (result == HAL_OK)
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 15
+
+
+ 627              		.loc 1 135 9
+ 628 0038 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 629 003a 002B     		cmp	r3, #0
+ 630 003c 07D1     		bne	.L23
+ 136:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 			  {
+ 137:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 				  sprintf(temp_buff, "0x%X", i);
+ 631              		.loc 1 137 7
+ 632 003e 0D4B     		ldr	r3, .L25+8
+ 633 0040 1B68     		ldr	r3, [r3]
+ 634 0042 0A4A     		ldr	r2, .L25
+ 635 0044 1268     		ldr	r2, [r2]
+ 636 0046 0D49     		ldr	r1, .L25+16
+ 637 0048 1846     		mov	r0, r3
+ 638 004a FFF7FEFF 		bl	sprintf
+ 639              	.L23:
+ 127:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 		  {
+ 640              		.loc 1 127 23 discriminator 2
+ 641 004e 074B     		ldr	r3, .L25
+ 642 0050 1B68     		ldr	r3, [r3]
+ 643 0052 0133     		adds	r3, r3, #1
+ 644 0054 054A     		ldr	r2, .L25
+ 645 0056 1360     		str	r3, [r2]
+ 646              	.L21:
+ 127:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 		  {
+ 647              		.loc 1 127 16 discriminator 1
+ 648 0058 044B     		ldr	r3, .L25
+ 649 005a 1B68     		ldr	r3, [r3]
+ 127:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 		  {
+ 650              		.loc 1 127 2 discriminator 1
+ 651 005c 7F2B     		cmp	r3, #127
+ 652 005e D6DD     		ble	.L24
+ 138:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 			//	  CDC_Transmit_FS(temp_buff, strlen((const char *)temp_buff));
+ 139:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+ 140:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 			  }
+ 141:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 		  }
+ 142:d:/1/123123/Hardware/MLX90614\mlx90614.c **** }
+ 653              		.loc 1 142 1
+ 654 0060 00BF     		nop
+ 655 0062 00BF     		nop
+ 656 0064 0837     		adds	r7, r7, #8
+ 657              	.LCFI24:
+ 658              		.cfi_def_cfa_offset 8
+ 659 0066 BD46     		mov	sp, r7
+ 660              	.LCFI25:
+ 661              		.cfi_def_cfa_register 13
+ 662              		@ sp needed
+ 663 0068 80BD     		pop	{r7, pc}
+ 664              	.L26:
+ 665 006a 00BF     		.align	2
+ 666              	.L25:
+ 667 006c 00000000 		.word	i
+ 668 0070 00000000 		.word	hi2c1
+ 669 0074 00000000 		.word	temp_buff
+ 670 0078 04000000 		.word	.LC1
+ 671 007c 08000000 		.word	.LC2
+ 672              		.cfi_endproc
+ 673              	.LFE291:
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 16
+
+
+ 675              		.section	.rodata
+ 676 000d 000000   		.align	2
+ 677              	.LC3:
+ 678 0010 57204465 		.ascii	"W Dev: 0x%02X, Reg: 0x%02X, Data: 0x%04X, CRC8_calc"
+ 678      763A2030 
+ 678      78253032 
+ 678      582C2052 
+ 678      65673A20 
+ 679 0043 3A307825 		.ascii	":0x%02X\015\012\000"
+ 679      3032580D 
+ 679      0A00
+ 680 004d 000000   		.align	2
+ 681              	.LC4:
+ 682 0050 52204465 		.ascii	"R Dev: 0x%02X, Reg: 0x%02X, Data: 0x%04X, CRC8_in:0"
+ 682      763A2030 
+ 682      78253032 
+ 682      582C2052 
+ 682      65673A20 
+ 683 0083 78253032 		.ascii	"x%02X, CRC8_calc:0x%02X\015\012\000"
+ 683      582C2043 
+ 683      5243385F 
+ 683      63616C63 
+ 683      3A307825 
+ 684              		.section	.text.MLX90614_SendDebugMsg,"ax",%progbits
+ 685              		.align	1
+ 686              		.global	MLX90614_SendDebugMsg
+ 687              		.syntax unified
+ 688              		.thumb
+ 689              		.thumb_func
+ 690              		.fpu fpv4-sp-d16
+ 692              	MLX90614_SendDebugMsg:
+ 693              	.LFB292:
+ 143:d:/1/123123/Hardware/MLX90614\mlx90614.c **** void MLX90614_SendDebugMsg(uint8_t op_type, uint8_t devAddr, uint8_t regAddr, uint16_t data, uint8_
+ 694              		.loc 1 143 128
+ 695              		.cfi_startproc
+ 696              		@ args = 8, pretend = 0, frame = 8
+ 697              		@ frame_needed = 1, uses_anonymous_args = 0
+ 698 0000 B0B5     		push	{r4, r5, r7, lr}
+ 699              	.LCFI26:
+ 700              		.cfi_def_cfa_offset 16
+ 701              		.cfi_offset 4, -16
+ 702              		.cfi_offset 5, -12
+ 703              		.cfi_offset 7, -8
+ 704              		.cfi_offset 14, -4
+ 705 0002 86B0     		sub	sp, sp, #24
+ 706              	.LCFI27:
+ 707              		.cfi_def_cfa_offset 40
+ 708 0004 04AF     		add	r7, sp, #16
+ 709              	.LCFI28:
+ 710              		.cfi_def_cfa 7, 24
+ 711 0006 0446     		mov	r4, r0
+ 712 0008 0846     		mov	r0, r1
+ 713 000a 1146     		mov	r1, r2
+ 714 000c 1A46     		mov	r2, r3
+ 715 000e 2346     		mov	r3, r4
+ 716 0010 FB71     		strb	r3, [r7, #7]
+ 717 0012 0346     		mov	r3, r0
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 17
+
+
+ 718 0014 BB71     		strb	r3, [r7, #6]
+ 719 0016 0B46     		mov	r3, r1
+ 720 0018 7B71     		strb	r3, [r7, #5]
+ 721 001a 1346     		mov	r3, r2	@ movhi
+ 722 001c 7B80     		strh	r3, [r7, #2]	@ movhi
+ 144:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	if(op_type == MLX90614_DBG_MSG_W) {
+ 723              		.loc 1 144 4
+ 724 001e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 725 0020 002B     		cmp	r3, #0
+ 726 0022 0ED1     		bne	.L28
+ 145:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 		snprintf(temp_buff, sizeof(temp_buff), "W Dev: 0x%02X, Reg: 0x%02X, Data: 0x%04X, CRC8_calc:0x%02
+ 727              		.loc 1 145 3
+ 728 0024 134B     		ldr	r3, .L31
+ 729 0026 1868     		ldr	r0, [r3]
+ 730 0028 BC79     		ldrb	r4, [r7, #6]	@ zero_extendqisi2
+ 731 002a 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 732 002c 7A88     		ldrh	r2, [r7, #2]
+ 733 002e 397F     		ldrb	r1, [r7, #28]	@ zero_extendqisi2
+ 734 0030 0291     		str	r1, [sp, #8]
+ 735 0032 0192     		str	r2, [sp, #4]
+ 736 0034 0093     		str	r3, [sp]
+ 737 0036 2346     		mov	r3, r4
+ 738 0038 0F4A     		ldr	r2, .L31+4
+ 739 003a 0421     		movs	r1, #4
+ 740 003c FFF7FEFF 		bl	snprintf
+ 146:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	//	CDC_Transmit_FS(temp_buff, strlen((const char *)temp_buff));
+ 147:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	}
+ 148:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	else if (op_type == MLX90614_DBG_MSG_R) {
+ 149:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 		snprintf(temp_buff, sizeof(temp_buff), "R Dev: 0x%02X, Reg: 0x%02X, Data: 0x%04X, CRC8_in:0x%02X,
+ 150:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	//	CDC_Transmit_FS(temp_buff, strlen((const char *)temp_buff));
+ 151:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	}
+ 152:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 
+ 153:d:/1/123123/Hardware/MLX90614\mlx90614.c **** }
+ 741              		.loc 1 153 1
+ 742 0040 13E0     		b	.L30
+ 743              	.L28:
+ 148:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 		snprintf(temp_buff, sizeof(temp_buff), "R Dev: 0x%02X, Reg: 0x%02X, Data: 0x%04X, CRC8_in:0x%02X,
+ 744              		.loc 1 148 10
+ 745 0042 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 746 0044 012B     		cmp	r3, #1
+ 747 0046 10D1     		bne	.L30
+ 149:d:/1/123123/Hardware/MLX90614\mlx90614.c **** 	//	CDC_Transmit_FS(temp_buff, strlen((const char *)temp_buff));
+ 748              		.loc 1 149 3
+ 749 0048 0A4B     		ldr	r3, .L31
+ 750 004a 1C68     		ldr	r4, [r3]
+ 751 004c BD79     		ldrb	r5, [r7, #6]	@ zero_extendqisi2
+ 752 004e 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 753 0050 7A88     		ldrh	r2, [r7, #2]
+ 754 0052 397E     		ldrb	r1, [r7, #24]	@ zero_extendqisi2
+ 755 0054 387F     		ldrb	r0, [r7, #28]	@ zero_extendqisi2
+ 756 0056 0390     		str	r0, [sp, #12]
+ 757 0058 0291     		str	r1, [sp, #8]
+ 758 005a 0192     		str	r2, [sp, #4]
+ 759 005c 0093     		str	r3, [sp]
+ 760 005e 2B46     		mov	r3, r5
+ 761 0060 064A     		ldr	r2, .L31+8
+ 762 0062 0421     		movs	r1, #4
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 18
+
+
+ 763 0064 2046     		mov	r0, r4
+ 764 0066 FFF7FEFF 		bl	snprintf
+ 765              	.L30:
+ 766              		.loc 1 153 1
+ 767 006a 00BF     		nop
+ 768 006c 0837     		adds	r7, r7, #8
+ 769              	.LCFI29:
+ 770              		.cfi_def_cfa_offset 16
+ 771 006e BD46     		mov	sp, r7
+ 772              	.LCFI30:
+ 773              		.cfi_def_cfa_register 13
+ 774              		@ sp needed
+ 775 0070 B0BD     		pop	{r4, r5, r7, pc}
+ 776              	.L32:
+ 777 0072 00BF     		.align	2
+ 778              	.L31:
+ 779 0074 00000000 		.word	temp_buff
+ 780 0078 10000000 		.word	.LC3
+ 781 007c 50000000 		.word	.LC4
+ 782              		.cfi_endproc
+ 783              	.LFE292:
+ 785              		.text
+ 786              	.Letext0:
+ 787              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 788              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 789              		.file 4 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 790              		.file 5 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\lib\\gcc\\arm-none-eabi
+ 791              		.file 6 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 792              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\9 2019-q4-major\\arm-none-eabi\\include\
+ 793              		.file 8 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_typedef.h"
+ 794              		.file 9 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/common/cmsis/core_cm4.h"
+ 795              		.file 10 "d:/1/123123/Inc/system_stm32l4xx.h"
+ 796              		.file 11 "d:/1/123123/Inc/stm32l431xx.h"
+ 797              		.file 12 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_config.h"
+ 798              		.file 13 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_err.h"
+ 799              		.file 14 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-m/include/los_hwi.h"
+ 800              		.file 15 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ 801              		.file 16 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ 802              		.file 17 "C:/Users/SORA/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm3
+ 803              		.file 18 "d:/1/123123/Inc/i2c.h"
+ARM GAS  C:\Users\SORA\AppData\Local\Temp\ccyceVec.s 			page 19
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 mlx90614.c
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:26     .data.temp_buff:00000000 temp_buff
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:19     .rodata:00000000 $d
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:23     .data.temp_buff:00000000 $d
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:33     .bss.i:00000000 i
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:30     .bss.i:00000000 $d
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:36     .rodata.crc_table:00000000 $d
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:39     .rodata.crc_table:00000000 crc_table
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:56     .text.CRC8_Calc:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:64     .text.CRC8_Calc:00000000 CRC8_Calc
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:150    .text.CRC8_Calc:00000058 $d
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:155    .text.MLX90614_WriteReg:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:162    .text.MLX90614_WriteReg:00000000 MLX90614_WriteReg
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:692    .text.MLX90614_SendDebugMsg:00000000 MLX90614_SendDebugMsg
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:328    .text.MLX90614_WriteReg:000000f4 $d
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:333    .text.MLX90614_ReadReg:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:340    .text.MLX90614_ReadReg:00000000 MLX90614_ReadReg
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:469    .text.MLX90614_ReadReg:000000a8 $d
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:478    .text.MLX90614_ReadTemp:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:485    .text.MLX90614_ReadTemp:00000000 MLX90614_ReadTemp
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:558    .text.MLX90614_ReadTemp:00000068 $d
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:573    .text.MLX90614_ScanDevices:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:580    .text.MLX90614_ScanDevices:00000000 MLX90614_ScanDevices
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:667    .text.MLX90614_ScanDevices:0000006c $d
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:685    .text.MLX90614_SendDebugMsg:00000000 $t
+C:\Users\SORA\AppData\Local\Temp\ccyceVec.s:779    .text.MLX90614_SendDebugMsg:00000074 $d
+
+UNDEFINED SYMBOLS
+HAL_I2C_Master_Transmit
+HAL_Delay
+hi2c1
+HAL_I2C_Mem_Read
+__aeabi_i2d
+__aeabi_dmul
+__aeabi_dsub
+__aeabi_d2f
+HAL_I2C_IsDeviceReady
+sprintf
+snprintf
